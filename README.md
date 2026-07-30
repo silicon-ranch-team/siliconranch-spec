@@ -210,10 +210,28 @@ The CLI handles file scaffolding and status checking. The reasoning-heavy workfl
 
 ### Publishing
 
-1. Bump the version in `package.json` according to [Semantic Versioning](https://semver.org/).
-2. Update `CHANGELOG.md` under `## [Unreleased]` or create a new release section.
-3. Tag the release: `git tag vX.Y.Z`.
-4. Publish to npm: `npm publish`.
+Releases follow [GitFlow](https://nvie.com/posts/a-successful-git-branching-model/):
+
+1. Create a release branch from `development`:
+   ```bash
+   git checkout development
+   git pull origin development
+   git checkout -b release/vX.Y.Z
+   ```
+2. Bump the version in `package.json` according to [Semantic Versioning](https://semver.org/).
+3. Update `CHANGELOG.md` with a `## [X.Y.Z]` release section.
+4. Commit the version/changelog bump and push the release branch.
+5. Open a PR from `release/vX.Y.Z` to `main`.
+6. After the PR is merged, tag the merge commit:
+   ```bash
+   git checkout main
+   git pull origin main
+   git tag -a vX.Y.Z -m "Release vX.Y.Z"
+   git push origin vX.Y.Z
+   ```
+7. GitHub Actions will publish `silicon-ranch-spec@X.Y.Z` to npm automatically.
+
+**Required secret:** Add an npm **automation token** named `NPM_TOKEN` in the repository's GitHub Actions secrets (`Settings → Secrets and variables → Actions`).
 
 ## Documentation
 
