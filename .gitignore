@@ -1,21 +1,18 @@
-# Local SRSP state and planning (not shared)
+# Local SRSP working state (keep private)
 .claude/specs/active-spec.txt
 .claude/todos/
 .claude/plans/
 .claude/tmp/
 
-# Node / npm
+# Dependencies
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-package-lock.json
 
 # OS / editor clutter
 .DS_Store
 Thumbs.db
+*.log
+.vscode/
+.idea/
 *.swp
 *.swo
 *~
-.vscode/
-.idea/
