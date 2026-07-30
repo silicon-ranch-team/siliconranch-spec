@@ -61,3 +61,12 @@
 - [ ] I have added or updated tests if applicable.
 - [ ] I have run `srsp doctor` on the active spec (if this PR changes SRSP behavior).
 - [ ] My commit messages follow the project convention.
+
+---
+
+## 🚀 Release Checklist (only for release branches)
+
+- [ ] `package.json` version matches the release branch/tag (`release/vX.Y.Z` / `vX.Y.Z`).
+- [ ] `CHANGELOG.md` has an entry for this version.
+- [ ] The npm automation token `NPM_TOKEN` is configured in GitHub Actions secrets.
+- [ ] This PR targets `main` and was branched from `development`.
