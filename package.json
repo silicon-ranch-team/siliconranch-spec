@@ -1,0 +1,35 @@
+{
+  "name": "silicon-ranch-spec",
+  "version": "0.1.0",
+  "description": "CLI for the Silicon Ranch Spec Driven Development framework.",
+  "main": "src/index.js",
+  "bin": {
+    "srsp": "bin/srsp.js"
+  },
+  "scripts": {
+    "test": "node --test",
+    "lint": "echo 'No linter configured'"
+  },
+  "keywords": [
+    "srsp",
+    "spec",
+    "claude",
+    "claude-code",
+    "workflow",
+    "spec-driven-development"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    ".claude/skills/",
+    ".claude/specs/templates/",
+    "docs/",
+    "README.md",
+    "CHANGELOG.md"
+  ]
+}

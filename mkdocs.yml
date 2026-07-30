@@ -1,0 +1,16 @@
+site_name: Silicon Ranch Spec Driven Development
+site_url: https://zerooneit.github.io/custom-spec-driven-development
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - Framework Guide: spec-driven-framework.md
+  - State Machine: state-machine.md
+  - CLI: cli.md
+
+docs_dir: docs
+
+markdown_extensions:
+  - toc:
+      permalink: true
