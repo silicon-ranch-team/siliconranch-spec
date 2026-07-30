@@ -19,8 +19,7 @@ At every stage, Claude presents the generated artifact and asks for explicit eng
 3. Create a spec: `srsp start my-feature`
 4. Run `/srsp-explore` in Claude Code to clarify the spec.
 
-## Documentation
-
+- [Tutorial](tutorial.md)
 - [Framework Guide](spec-driven-framework.md)
 - [State Machine](state-machine.md)
 - [CLI Reference](cli.md)

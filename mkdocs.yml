@@ -5,6 +5,7 @@ theme:
 
 nav:
   - Home: index.md
+  - Tutorial: tutorial.md
   - Framework Guide: spec-driven-framework.md
   - State Machine: state-machine.md
   - CLI: cli.md

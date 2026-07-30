@@ -80,6 +80,7 @@ Spec metadata supports an optional `base-branch` field for per-spec PR target ov
 
 ## Documentation
 
+- `docs/tutorial.md` — step-by-step walkthrough.
 - `docs/spec-driven-framework.md` — full framework guide.
 - `docs/state-machine.md` — canonical stages, transitions, and entry commands.
 - `.claude/specs/example-todo-api/` — complete example spec.
