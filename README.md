@@ -30,7 +30,7 @@ At every stage, Claude presents the generated artifact and asks for explicit use
 
 ## Quick Start
 
-1. Install the CLI:
+1. Install the CLI globally (recommended on Windows):
    ```bash
    npm install -g silicon-ranch-spec
    ```
@@ -186,12 +186,14 @@ The framework ships as an npm package called `silicon-ranch-spec`.
 ### Install
 
 ```bash
-# Global install
+# Global install (recommended, especially on Windows)
 npm install -g silicon-ranch-spec
 
-# Or run once without installing
+# Or run once without installing (works on macOS/Linux; may fail in Windows Git Bash)
 npx silicon-ranch-spec <command>
 ```
+
+> **Windows / Git Bash note:** `npx` may not resolve the `srsp` binary in Git Bash because npm does not expose `.cmd` wrappers there. Use a global install (`npm install -g silicon-ranch-spec`) or run from Command Prompt / PowerShell if you encounter `'srsp' is not recognized`.
 
 ### CLI commands
 
