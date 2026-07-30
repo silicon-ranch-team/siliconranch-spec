@@ -28,6 +28,27 @@ submitted
 
 At every stage, Claude presents the generated artifact and asks for explicit user approval. If the output is not good enough, the user can refine it in a loop until it meets the acceptance criteria.
 
+## Quick Start
+
+1. Install the CLI:
+   ```bash
+   npm install -g silicon-ranch-spec
+   ```
+2. Initialize the framework in your project:
+   ```bash
+   srsp init
+   ```
+3. Open the project in Claude Code and create your first spec:
+   ```text
+   /srsp-start my-feature
+   /srsp-explore
+   /srsp-propose
+   /srsp-apply
+   /srsp-archive
+   ```
+
+For a full walkthrough, see the [Framework Guide](docs/spec-driven-framework.md).
+
 ## Using the Framework
 
 The framework is designed to be used sequentially. Each command produces or refines an artifact and asks for your approval before advancing.
@@ -152,6 +173,7 @@ You can also interleave granular commands when needed:
 
 ## Documentation
 
+- [docs/tutorial.md](docs/tutorial.md) — step-by-step walkthrough.
 - [docs/spec-driven-framework.md](docs/spec-driven-framework.md) — full framework guide.
 - [docs/state-machine.md](docs/state-machine.md) — canonical stages, transitions, and entry commands.
 - [.claude/specs/example-todo-api/](.claude/specs/example-todo-api/) — complete example spec.
