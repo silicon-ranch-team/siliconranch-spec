@@ -1,0 +1,72 @@
+name: Create Release Tag
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create-tag:
+    name: Create release tag after merge
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ github.token }}
+
+      - name: Detect and create release tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+
+          echo "Looking for associated release PRs for commit ${COMMIT_SHA}..."
+
+          release_ref=$(gh api "repos/${REPO}/commits/${COMMIT_SHA}/pulls" \
+            --jq '.[] | select(.state == "closed" and .merged_at != null) | .head.ref' 2>/dev/null \
+            | grep -E '^release/v[0-9]+\.[0-9]+\.[0-9]+$' \
+            | head -n 1 || true)
+
+          if [ -z "${release_ref}" ]; then
+            echo "✓ No associated release PR found; no tag to create."
+            exit 0
+          fi
+
+          version="${release_ref#release/v}"
+          expected_tag="v${version}"
+
+          echo "Detected release PR for version ${version}. Expected tag: ${expected_tag}"
+
+          tag_sha=$(git ls-remote --tags origin "refs/tags/${expected_tag}" | awk '{print $1}' || true)
+
+          if [ -n "${tag_sha}" ]; then
+            # Tag already exists — verify it points to this commit.
+            commit_sha_from_tag=$(git ls-remote --tags origin "refs/tags/${expected_tag}^{}" | awk '{print $1}' || true)
+            if [ -z "${commit_sha_from_tag}" ]; then
+              commit_sha_from_tag="${tag_sha}"
+            fi
+
+            if [ "${commit_sha_from_tag}" != "${COMMIT_SHA}" ]; then
+              echo "❌ Tag ${expected_tag} already exists but points to ${commit_sha_from_tag}, not the current main commit ${COMMIT_SHA}."
+              exit 1
+            fi
+
+            echo "✓ Tag ${expected_tag} already exists and points to the current main commit."
+            exit 0
+          fi
+
+          echo "Creating and pushing tag ${expected_tag}..."
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "${expected_tag}" -m "Release ${expected_tag}"
+          git push origin "${expected_tag}"
+
+          echo "✓ Created and pushed tag ${expected_tag}."
