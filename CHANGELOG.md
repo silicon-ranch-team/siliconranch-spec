@@ -11,13 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - `Release Check` CI workflow validates release branch name, `package.json` version, `CHANGELOG.md` entry, `package-lock.json`, and tests before a release is tagged.
-- `Enforce Release Tag` CI workflow verifies that the expected `vX.Y.Z` tag exists on `main` after a release PR merge.
+- `Create Release Tag` CI workflow automatically creates and pushes `vX.Y.Z` when a `release/vX.Y.Z` PR merges to `main`.
 - `.github/scripts/validate-release.js` shared validation script used by both release workflows.
 
 ### Changed
 - `Release to npm` workflow now reuses `.github/scripts/validate-release.js` before publishing.
-- Release checklist in `.github/pull_request_template.md` now requires `package-lock.json`, a green `Release Check`, and the post-merge tag.
-- `README.md` publishing instructions mention the new `Release Check` and `Enforce Release Tag` workflows.
+- Release checklist in `.github/pull_request_template.md` now requires `package-lock.json` and a green `Release Check`.
+- `README.md` publishing instructions mention the new `Release Check` and `Create Release Tag` workflows.
 
 ## [0.2.0] - 2026-07-31
 
@@ -50,6 +50,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `docs/state-machine.md` updated with `reopened` stage and transitions.
 - `/srsp-archive.md` no longer handles reopen; it directs engineers to `/srsp-reopen`.
 - All stage-changing skills now update `stage-changed-at`.
+- `docs/maturity.md` added explaining the v0.2.0 traceability and maturity model.
 - `docs/tutorial.md`, `docs/index.md`, and `mkdocs.yml` updated to reference the maturity model and `/srsp-report`.
 - `docs/spec-driven-framework.md` metadata example updated with `trace`, `created-at`, and `stage-changed-at`.
 - `.claude/specs/example-todo-api/spec.md` updated with full `trace` metadata and a coverage report section.

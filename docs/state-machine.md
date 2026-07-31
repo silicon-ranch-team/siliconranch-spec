@@ -28,7 +28,7 @@ This document is the single source of truth for the Silicon Ranch Spec Driven De
 | `done` | Spec marked done without archiving. |
 | `archived` | Spec moved to archive. |
 | `cancelled` | Spec abandoned at any point. |
-| `reopened` | Spec was finalized and is now active again for a new iteration. Created by `/srsp-reopen`. |
+| `reopened` | Spec was finalized and is now active again for a new iteration. |
 
 ## Allowed Transitions
 
@@ -63,12 +63,17 @@ applied -> done
 applied -> archived
 applied -> cancelled
 
-# Final stages can be reopened (via /srsp-reopen)
+# Final stages can be reopened
 done -> reopened
 archived -> reopened
 cancelled -> reopened
 
 # Reopened specs re-enter the workflow
+done -> archived
+done -> cancelled
+archived -> cancelled
+cancelled -> archived
+
 reopened -> submitted
 reopened -> exploring
 ```
