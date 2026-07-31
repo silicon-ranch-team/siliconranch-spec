@@ -67,6 +67,7 @@ Finalize the proposal, technical design, and task plan for the active spec.
    - `stage: <new stage>`
    - `proposed: <ISO timestamp>` on accept/skip
    - `updated: <ISO timestamp>`
+   - `stage-changed-at: <ISO timestamp>`
    - Append entry to `## Decision Log` using the format from `docs/state-machine.md`:
      - On accept: `<timestamp> [proposal-approved] proposal approved: ready for /srsp-apply`
      - On refine: `<timestamp> [proposal-draft] proposal refined: <what changed>`

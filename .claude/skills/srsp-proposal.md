@@ -52,6 +52,7 @@ Generate or update only `proposal.md` for the active spec. Useful when you want 
 6. **Update `spec.md` metadata and Decision Log.**
    - `stage: proposal-draft` (or keep current if later)
    - `updated: <ISO timestamp>`
+   - `stage-changed-at: <ISO timestamp>` (only if stage actually changed)
    - Append to `## Decision Log` using the format from `docs/state-machine.md`:
      - On accept: `<timestamp> [proposal-draft] proposal refined: updated requirements`
      - On refine loop: `<timestamp> [proposal-draft] proposal refined: <what changed>`

@@ -29,10 +29,11 @@ Validate the active spec's metadata, required artifacts, stage values, requireme
 
 2. **Validate `spec.md` frontmatter.**
    - Required fields: `spec`, `title`, `author`, `status`, `stage`, `created`, `updated`.
+   - Recommended fields: `created-at`, `stage-changed-at` — used by `/srsp-report` for age and staleness calculations.
    - Optional field: `base-branch` — if set, must be a non-empty branch name.
    - `status` must be one of: `active`, `done`, `archived`, `cancelled`.
    - `stage` must be one of:
-     `submitted`, `exploring`, `proposal-draft`, `proposal-approved`, `implementing`, `verified`, `review-approved`, `committed`, `pr-created`, `applied`, `done`, `archived`, `cancelled`.
+     `submitted`, `exploring`, `proposal-draft`, `proposal-approved`, `implementing`, `verified`, `review-approved`, `committed`, `pr-created`, `applied`, `done`, `archived`, `cancelled`, `reopened`.
 
 3. **Validate `.srsp-config.md` files.**
    - Read `.srsp-config.md` at the project root.

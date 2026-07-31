@@ -64,6 +64,8 @@ Create a new Silicon Ranch spec workspace under `.claude/specs/<spec-name>/`.
    reopened-count: 0
    reopened-reason: ""
    reopened-ticket-url: ""
+   created-at: <ISO timestamp>
+   stage-changed-at: <ISO timestamp>
    created: <ISO date>
    updated: <ISO date>
    last-run: ""
@@ -161,4 +163,5 @@ Create a new Silicon Ranch spec workspace under `.claude/specs/<spec-name>/`.
 - Keep the spec text faithful to what the user provided.
 - If the user provides very little detail, note it in `## Notes` and warn that exploration will be more exploratory.
 - `updated` must match `created` on first creation.
+- `created-at` and `stage-changed-at` should be ISO timestamps; `created` and `updated` remain ISO dates for backward compatibility.
 - Stage and status values must follow `docs/state-machine.md`.

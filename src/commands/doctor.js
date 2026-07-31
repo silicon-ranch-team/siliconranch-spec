@@ -4,7 +4,7 @@ const path = require('path');
 const ALLOWED_STAGES = new Set([
   'submitted', 'exploring', 'proposal-draft', 'proposal-approved',
   'implementing', 'verified', 'review-approved', 'committed',
-  'pr-created', 'applied', 'done', 'archived', 'cancelled',
+  'pr-created', 'applied', 'done', 'archived', 'cancelled', 'reopened',
 ]);
 
 const ALLOWED_STATUSES = new Set(['active', 'done', 'archived', 'cancelled']);
@@ -54,6 +54,10 @@ function doctor(args, { cwd }) {
   const requiredFields = ['spec', 'title', 'author', 'status', 'stage', 'created', 'updated'];
   for (const field of requiredFields) {
     if (!fm[field]) findings.push(`Missing required frontmatter field: ${field}`);
+  }
+
+  if (fm.stage === 'reopened' && !fm['reopened-count']) {
+    findings.push('Reopened specs should have a reopened-count value');
   }
 
   if (fm.status && !ALLOWED_STATUSES.has(fm.status)) {

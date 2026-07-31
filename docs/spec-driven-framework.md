@@ -56,6 +56,7 @@ At every stage, Claude presents the artifact and asks for explicit user approval
 | `/srsp-verify`   | Run tests only |
 | `/srsp-commit`   | Commit approved changes only |
 | `/srsp-pr`       | Create pull request only |
+| `/srsp-report`   | Generate a health and traceability report for all specs |
 
 ## Per-Spec Files (4 files)
 
