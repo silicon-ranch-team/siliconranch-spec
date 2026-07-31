@@ -9,6 +9,10 @@ nav:
   - Framework Guide: spec-driven-framework.md
   - State Machine: state-machine.md
   - Maturity Model: maturity.md
+  - Drift Detection: sync.md
+  - Traceability: coverage.md
+  - Reopening Specs: reopen.md
+  - Spec Reports: report.md
   - CLI: cli.md
 
 docs_dir: docs

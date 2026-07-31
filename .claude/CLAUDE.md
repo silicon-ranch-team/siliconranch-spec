@@ -88,6 +88,11 @@ Spec metadata supports an optional `base-branch` field for per-spec PR target ov
 - `docs/tutorial.md` — step-by-step walkthrough.
 - `docs/spec-driven-framework.md` — full framework guide.
 - `docs/state-machine.md` — canonical stages, transitions, and entry commands.
+- `docs/maturity.md` — v0.2.0 traceability and maturity model.
+- `docs/sync.md` — keeping spec artifacts aligned with `/srsp-sync`.
+- `docs/coverage.md` — requirement traceability with `/srsp-coverage`.
+- `docs/reopen.md` — reopening done/archived/cancelled specs with `/srsp-reopen`.
+- `docs/report.md` — spec health reports with `/srsp-report` and `srsp report`.
 - `.claude/specs/example-todo-api/` — complete example spec.
 - `.claude/specs/README.md` — how specs are organized.
 

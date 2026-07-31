@@ -142,6 +142,28 @@ Fields:
 - `ticket-url` — optional link to an external issue tracker ticket.
 - `trace` — optional lightweight traceability map from requirement IDs to TODO, task, implementation file pattern, and test pattern. Used by `/srsp-coverage` and validated by `/srsp-doctor`.
 
+## Configuration
+
+SRSP behavior can be customized at the project level and per spec through `.srsp-config.md` files.
+
+- **Project-level config:** `.srsp-config.md` at the repository root.
+- **Per-spec config:** `.claude/specs/<spec-name>/.srsp-config.md`.
+- Per-spec values override project-level values. Empty values mean "use framework defaults."
+
+Allowed keys:
+
+| Key | Used by | Purpose |
+|-----|---------|---------|
+| `test-command` | `/srsp-verify`, `/srsp-apply` | Command to run tests |
+| `commit-prefix` | `/srsp-apply` | Prefix for generated commit messages |
+| `branch-prefix` | `/srsp-apply` | Prefix for suggested feature branches |
+| `pr-target` | `/srsp-apply`, `/srsp-pr` | Default PR target branch |
+| `coverage-command` | `/srsp-coverage` | Command to collect test coverage |
+| `stale-days` | `/srsp-report`, `srsp report` | Days before a spec is flagged stale (default: 14) |
+| `ticket-base-url` | `/srsp-link` | Base URL for ticket validation |
+
+Unknown keys are ignored but warned about by `/srsp-doctor`.
+
 ## Decision Log
 
 The `spec.md` body includes a `## Decision Log` section where every approval, refinement, test run, and finalization is recorded. Entries use a standard format:
@@ -222,27 +244,34 @@ The framework is designed to be used sequentially. Each command produces or refi
    - Updates `spec.md` stage after each sub-step.
 
 5. **`/srsp-archive`** — Finalize the spec.
-   - Options: **Done / Archive / Cancel / Reopen**.
+   - Options: **Done / Archive / Cancel**.
    - Updates `spec.md` metadata and Decision Log.
    - To permanently delete, use `/srsp-delete`.
+   - To reopen a finalized spec later, use `/srsp-reopen`.
 
-6. **`/srsp-status`** — Show all specs.
+6. **`/srsp-reopen`** — Reopen a finalized spec.
+   - Accepts a reason (bug, feature-request, regression, other) and optional ticket URL.
+   - Moves a `done`, `archived`, or `cancelled` spec back to `submitted` or `exploring`.
+   - Creates a `## Reopen Tasks` section in `tasks.md`.
+   - Preserves the original Decision Log and records the reopen event.
+
+7. **`/srsp-status`** — Show all specs.
    - Lists specs, active spec, current stage, and recommended next command.
    - Confirms the active spec before switching.
 
-7. **`/srsp-switch`** — Switch the active spec.
+8. **`/srsp-switch`** — Switch the active spec.
    - Lists all non-archived specs.
    - Updates `.claude/specs/active-spec.txt` to the selected spec.
 
-8. **`/srsp-resume`** — Resume the active spec.
+9. **`/srsp-resume`** — Resume the active spec.
    - Reads the active spec stage and recommends or invokes the next command.
 
-9. **`/srsp-doctor`** — Validate the active spec.
+10. **`/srsp-doctor`** — Validate the active spec.
    - Checks `spec.md` frontmatter, allowed stage/status values, required artifacts for the current stage, and FR→TODO→Task coverage.
    - For `proposal-approved` and later stages, checks that `design.md` has a `## Testing Strategy` section and that `tasks.md` has verification tasks for every functional requirement.
    - Reports findings in a table and recommends a fix path.
 
-10. **`/srsp-delete`** — Permanently delete the active spec.
+11. **`/srsp-delete`** — Permanently delete the active spec.
    - Requires typing the exact spec name to confirm.
    - Updates `active-spec.txt` if the deleted spec was active.
 
@@ -253,9 +282,12 @@ The framework is designed to be used sequentially. Each command produces or refi
 | `/srsp-proposal` | Refine only `proposal.md`. |
 | `/srsp-design`   | Refine only `design.md`. |
 | `/srsp-tasks`    | Edit or regenerate only `tasks.md`. |
+| `/srsp-sync`     | Detect drift between requirements, design TODOs, and tasks. |
+| `/srsp-coverage` | Trace requirements → TODOs → tasks → code → tests. |
 | `/srsp-verify`    | Run tests only. |
 | `/srsp-commit`    | Commit approved changes only. |
 | `/srsp-pr`        | Create a pull request only. |
+| `/srsp-report`    | Generate a health and traceability report for all specs. |
 | `/srsp-link`      | Link the active spec to an external issue tracker ticket. |
 
 ### Safety & Guardrails

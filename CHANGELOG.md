@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `/srsp-report` skill and `srsp report` CLI command to list specs by stage/age, flag stale specs, and show coverage scores.
 - `created-at` and `stage-changed-at` metadata fields for accurate age and staleness calculations.
 - `docs/maturity.md` explaining the v0.2.0 traceability and maturity model.
+- `docs/sync.md`, `docs/coverage.md`, `docs/reopen.md`, and `docs/report.md` guides for the v0.2.0 feature set.
 
 ### Changed
 - `.github/workflows/release.yml` now reads Node.js version from `package.json` `engines.node` and uses `npm ci` for deterministic publishes.
@@ -40,6 +41,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `docs/tutorial.md`, `docs/index.md`, and `mkdocs.yml` updated to reference the maturity model and `/srsp-report`.
 - `docs/spec-driven-framework.md` metadata example updated with `trace`, `created-at`, and `stage-changed-at`.
 - `.claude/specs/example-todo-api/spec.md` updated with full `trace` metadata and a coverage report section.
+
+### Fixed
+- `srsp doctor` frontmatter parser now handles CRLF line endings and skips indented nested `trace` entries.
 
 ## [0.1.2] - 2026-07-31
 
