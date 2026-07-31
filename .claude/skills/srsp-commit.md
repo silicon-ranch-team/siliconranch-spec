@@ -1,10 +1,6 @@
 ---
 name: srsp-commit
 description: Commit approved changes for the active spec with confirmation.
-tags:
-  - srsp
-  - granular
-  - commit
 ---
 
 # /srsp-commit — Commit Changes Only

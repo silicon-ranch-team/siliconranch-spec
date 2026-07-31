@@ -1,10 +1,6 @@
 ---
 name: srsp-proposal
 description: Refine proposal.md for the active spec and warn on missing coverage.
-tags:
-  - srsp
-  - granular
-  - proposal
 ---
 
 # /srsp-proposal — Refine the Proposal Only

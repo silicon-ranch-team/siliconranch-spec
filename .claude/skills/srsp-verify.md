@@ -1,10 +1,6 @@
 ---
 name: srsp-verify
 description: Run tests for the active spec and record a short summary.
-tags:
-  - srsp
-  - granular
-  - verify
 ---
 
 # /srsp-verify — Run Tests Only

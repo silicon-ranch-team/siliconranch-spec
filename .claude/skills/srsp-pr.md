@@ -1,10 +1,6 @@
 ---
 name: srsp-pr
 description: Create a pull request for the active spec with confirmation.
-tags:
-  - srsp
-  - granular
-  - pr
 ---
 
 # /srsp-pr — Create Pull Request Only

@@ -1,10 +1,6 @@
 ---
 name: srsp-explore
 description: Explore and clarify the active spec, drafting an initial proposal.md.
-tags:
-  - srsp
-  - primary
-  - explore
 ---
 
 # /srsp-explore — Explore the Spec
