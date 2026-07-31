@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-07-31
+
 ### Added
 - `/srsp-propose`, `/srsp-tasks`, and `/srsp-apply` now require a `## Testing Strategy` in `design.md` and verification tasks in `tasks.md` covering every functional requirement.
 - `srsp doctor` CLI and `/srsp-doctor` skill validate the presence of `## Testing Strategy` and `## Verification Tasks` for specs at `proposal-approved` and later stages.
@@ -24,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `reopened` stage and reopen-related metadata fields (`last-reopened`, `reopened-count`, `reopened-reason`, `reopened-ticket-url`).
 - `/srsp-report` skill and `srsp report` CLI command to list specs by stage/age, flag stale specs, and show coverage scores.
 - `created-at` and `stage-changed-at` metadata fields for accurate age and staleness calculations.
+- `docs/maturity.md` explaining the v0.2.0 traceability and maturity model.
 
 ### Changed
 - `.github/workflows/release.yml` now reads Node.js version from `package.json` `engines.node` and uses `npm ci` for deterministic publishes.
@@ -34,7 +37,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `docs/state-machine.md` updated with `reopened` stage and transitions.
 - `/srsp-archive.md` no longer handles reopen; it directs engineers to `/srsp-reopen`.
 - All stage-changing skills now update `stage-changed-at`.
-- `docs/maturity.md` added explaining the v0.2.0 traceability and maturity model.
 - `docs/tutorial.md`, `docs/index.md`, and `mkdocs.yml` updated to reference the maturity model and `/srsp-report`.
 - `docs/spec-driven-framework.md` metadata example updated with `trace`, `created-at`, and `stage-changed-at`.
 - `.claude/specs/example-todo-api/spec.md` updated with full `trace` metadata and a coverage report section.
