@@ -38,9 +38,10 @@ interface <ComponentName>Props {
 - [ ] TODO-5: Write component tests and stories.
 
 ## Testing Strategy
-- Unit tests for logic.
-- Component tests for user interactions.
-- Visual regression via Storybook.
+- **Unit tests** for logic using the configured test framework.
+- **Component tests** for user interactions and accessibility.
+- **Visual regression** via Storybook.
+- Component tests are written during implementation as part of TODO-5 and run during `/srsp-verify`.
 
 ## Risks & Mitigations
 - Risk: accessibility gaps → Mitigation: test with keyboard/screen reader.

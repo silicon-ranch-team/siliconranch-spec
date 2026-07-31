@@ -16,7 +16,7 @@ generated: 2026-07-29
 
 ## Non-Functional Requirements
 1. NFR1: Latency under <X ms> at p95.
-2. NFR2: Tests cover happy path and error cases.
+2. NFR2: Tests cover happy path and error cases for every functional requirement.
 
 ## Constraints & Assumptions
 - Authentication handled by existing middleware.

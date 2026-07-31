@@ -8,7 +8,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- `/srsp-propose`, `/srsp-tasks`, and `/srsp-apply` now require a `## Testing Strategy` in `design.md` and verification tasks in `tasks.md` covering every functional requirement.
+- `srsp doctor` CLI and `/srsp-doctor` skill validate the presence of `## Testing Strategy` and `## Verification Tasks` for specs at `proposal-approved` and later stages.
+- PR validation workflow now builds MkDocs docs with `--strict` to catch broken documentation before merge.
 - `/srsp-coverage` skill to trace requirements through design TODOs, tasks, code changes, and tests.
+
+### Changed
+- All spec templates now include explicit test-writing tasks and richer `## Testing Strategy` sections.
+- Per-spec `.srsp-config.md` templates include `stale-days` and `coverage-command`.
+
+### Fixed
+- `src/commands/doctor.js` frontmatter parser now handles CRLF line endings and skips indented nested entries.
 - Optional `trace` frontmatter field in `spec.md` for lightweight requirement traceability.
 - `/srsp-reopen` skill to reopen done, archived, or cancelled specs with reason tracking and reopen tasks.
 - `reopened` stage and reopen-related metadata fields (`last-reopened`, `reopened-count`, `reopened-reason`, `reopened-ticket-url`).

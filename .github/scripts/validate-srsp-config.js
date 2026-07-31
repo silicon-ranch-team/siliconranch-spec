@@ -7,6 +7,7 @@ const ALLOWED_KEYS = new Set([
   'branch-prefix',
   'pr-target',
   'coverage-command',
+  'stale-days',
   'ticket-base-url',
 ]);
 

@@ -32,19 +32,24 @@ Finalize the proposal, technical design, and task plan for the active spec.
 
 3. **Generate or refine `proposal.md`.**
    - Include summary, functional requirements, acceptance criteria, non-functional requirements, constraints, assumptions, and open questions.
-   - Requirements must be testable or verifiable.
+   - Requirements must be testable or verifiable. Every functional requirement must be possible to exercise with a unit, integration, or UI test.
 
 4. **Generate or refine `design.md`.**
    - Include overview, architecture, file changes, API/interface definitions, implementation TODOs, testing strategy, risks, and mitigations.
+   - **The `## Testing Strategy` section is required.** It must specify test layers (unit, integration, UI), frameworks, and which requirements each layer validates. If it is missing or empty, warn the engineer and do not allow approval.
    - Every functional requirement should trace to at least one TODO.
 
 5. **Generate or refine `tasks.md`.**
    - Convert design TODOs into an ordered, checkable task plan.
    - Include implementation tasks, verification tasks, and review/release tasks.
+   - **Verification tasks are required.** Each functional requirement must have at least one verification task (unit test, integration test, UI test, or manual verification with recorded evidence). If verification tasks are missing, warn the engineer and do not allow approval.
 
 6. **Cross-check artifact consistency before presenting.**
    - Compare `proposal.md` requirements to `design.md` TODOs and `tasks.md` tasks.
    - If any requirement lacks a TODO or any TODO lacks a task, warn the engineer explicitly.
+   - Verify `design.md` contains a non-empty `## Testing Strategy` section.
+   - Verify `tasks.md` contains at least one verification task for every functional requirement.
+   - If the testing strategy or verification tasks are missing, warn the engineer explicitly and do not allow approval until fixed.
    - Recommend `/srsp-sync` after acceptance if drift was detected.
 
 7. **Present a concise summary.**
@@ -55,8 +60,12 @@ Finalize the proposal, technical design, and task plan for the active spec.
 
 8. **Run the formal approval/refinement loop:**
 
-   This is the formal approval gate. Ask the user:
-   - `Accept` — update `spec.md` stage to `proposal-approved`, record decision, recommend `/srsp-apply`.
+   This is the formal approval gate. Before offering `Accept`, confirm:
+   - `design.md` has a non-empty `## Testing Strategy` section.
+   - `tasks.md` has verification tasks covering every functional requirement.
+
+   Ask the user:
+   - `Accept` — update `spec.md` stage to `proposal-approved`, record decision, recommend `/srsp-apply`. Only offer this when the testing strategy and verification tasks are present.
    - `Refine proposal` — ask what is missing/wrong, append notes to `proposal.md`, regenerate, present again.
    - `Refine design` — ask what is missing/wrong, append notes to `design.md`, regenerate, present again.
    - `Refine tasks` — ask what to change, update `tasks.md`, present again.
@@ -158,7 +167,8 @@ generated: <ISO date>
 - [ ] Task-2: ... ← TODO-2
 
 ## Verification Tasks
-- [ ] Verify-1: ...
+- [ ] Verify-1: Unit/integration/UI test for FR1
+- [ ] Verify-2: Unit/integration/UI test for FR2
 
 ## Review / Release Tasks
 - [ ] Engineer review and approval
@@ -172,6 +182,8 @@ generated: <ISO date>
 - Acceptable entry stages are `exploring`, `proposal-draft`, or later.
 - Do not write implementation code at this stage.
 - Design TODOs must be concrete enough to become tasks.
+- A non-empty `## Testing Strategy` is required in `design.md`; approval is blocked without it.
+- Verification tasks in `tasks.md` must cover every functional requirement; approval is blocked without them.
 - Every stage decision must be recorded in `spec.md`.
 - Commit and PR are not created here; they happen in `/srsp-apply` only after engineer approval.
 - Stage transitions and Decision Log format must follow `docs/state-machine.md`.
