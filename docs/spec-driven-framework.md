@@ -237,7 +237,7 @@ The framework is designed to be used sequentially. Each command produces or refi
 4. **`/srsp-apply`** — Implement, verify, review, commit, and open a PR.
    - Resumes from the current sub-stage (`proposal-approved`, `implementing`, `verified`, `review-approved`, `committed`, or `pr-created`).
    - Implements tasks from `tasks.md` and checks them off.
-   - Runs tests live and records a short summary in `spec.md` only.
+   - Expects the engineer to create or update tests as part of implementation; SRSP runs tests live and records a short summary in `spec.md` only.
    - Presents changes for explicit engineer review approval.
    - Commits and creates a PR **only after** engineer confirmation.
    - Records commit hash and PR URL in `spec.md`.

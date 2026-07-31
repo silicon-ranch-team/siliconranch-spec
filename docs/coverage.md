@@ -47,13 +47,11 @@ Inside Claude Code:
 /srsp-coverage
 ```
 
-CLI:
-
-```bash
-srsp report
-```
-
 `/srsp-apply` will also run `/srsp-coverage` automatically after tests if `.srsp-config.md` has a non-empty `coverage-command`.
+
+## What `/srsp-coverage` does not do
+
+`/srsp-coverage` verifies existing tests and reports gaps. It does not generate new test files automatically. Test files are created by the engineer as part of the implementation tasks recorded in `tasks.md`.
 
 ## Example output
 
