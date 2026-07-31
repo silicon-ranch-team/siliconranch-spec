@@ -47,6 +47,6 @@ List all specs and switch the active one.
 ## Rules
 
 - Do not modify any spec artifact; only change `.claude/specs/active-spec.txt`.
-- If the selected spec is archived, inform the engineer and offer `/srsp-archive` to reopen it first.
+- If the selected spec is archived, inform the engineer and offer `/srsp-reopen` to reactivate it.
 - If no specs exist, prompt to run `/srsp-start`.
 - Recommended next commands follow `docs/state-machine.md`.

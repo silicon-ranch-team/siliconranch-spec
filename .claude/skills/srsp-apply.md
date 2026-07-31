@@ -99,6 +99,7 @@ Implement, verify, review, commit, and open a PR for the active spec — resumin
    - Update `spec.md` metadata:
      - `stage: implementing`
      - `updated: <ISO timestamp>`
+     - `stage-changed-at: <ISO timestamp>`
    - Append to Decision Log using the format from `docs/state-machine.md`:
      - On first implementation entry: `<timestamp> [implementing] implementation started`
      - On each completed task: `<timestamp> [implementing] task complete: <task text>`
@@ -113,6 +114,7 @@ Implement, verify, review, commit, and open a PR for the active spec — resumin
      - `last-run: <ISO timestamp>`
      - `test-result: <passed (n/n)>` or `<failed (x/n)>`
      - `updated: <ISO timestamp>`
+     - `stage-changed-at: <ISO timestamp>`
    - Append to Decision Log using the format from `docs/state-machine.md`:
      - `<timestamp> [verified] tests run: <result summary>`
    - If tests fail, ask to fix or refine. Do not proceed to review until tests pass or the user explicitly skips.
@@ -131,11 +133,11 @@ Implement, verify, review, commit, and open a PR for the active spec — resumin
    - Show a concise change summary (files modified, key decisions, test result).
    - Show diff only if requested.
    - Ask the engineer:
-     - `Approve` — record approval in `spec.md` Decision Log, set `stage: review-approved`, update `updated`.
+     - `Approve` — record approval in `spec.md` Decision Log, set `stage: review-approved`, update `updated` and `stage-changed-at`.
        - Append: `<timestamp> [review-approved] engineer review approved: ready to commit`
-     - `Request changes` — record requested changes, set `stage: implementing`, return to implementation.
+     - `Request changes` — record requested changes, set `stage: implementing`, update `stage-changed-at`, return to implementation.
        - Append: `<timestamp> [implementing] review requested changes: <summary>`
-     - `Cancel` — set `status: cancelled`, record reason, stop.
+     - `Cancel` — set `status: cancelled`, update `stage-changed-at`, record reason, stop.
        - Append: `<timestamp> [cancelled] review cancelled: <reason>`
    - The engineer must explicitly approve before commit/PR.
 
@@ -144,7 +146,7 @@ Implement, verify, review, commit, and open a PR for the active spec — resumin
    - Apply `commit-prefix` from `.srsp-config.md` if set (non-empty).
    - Show files to commit and the message.
    - Ask the engineer:
-     - `Commit` — stage and commit. Record `commit-hash` in `spec.md` metadata, set stage to `committed`, append to Decision Log.
+     - `Commit` — stage and commit. Record `commit-hash` in `spec.md` metadata, set stage to `committed`, update `stage-changed-at`, append to Decision Log.
        - Append: `<timestamp> [committed] commit created: <short-hash>`
      - `Edit message` — let the engineer edit, then commit.
      - `Skip commit` — record reason, proceed to PR step.
@@ -163,7 +165,7 @@ Implement, verify, review, commit, and open a PR for the active spec — resumin
      - `Generate description only` — no PR created.
      - `Skip PR` — record reason.
      - `Cancel` — stop.
-   - If PR created, record `pr-url` in `spec.md` metadata, set stage to `pr-created`, append to Decision Log:
+   - If PR created, record `pr-url` in `spec.md` metadata, set stage to `pr-created`, update `stage-changed-at`, append to Decision Log:
      - `<timestamp> [pr-created] PR opened: <url>`
    - If PR skipped, append:
      - `<timestamp> [pr-created] PR skipped: <reason>`
@@ -173,6 +175,7 @@ Implement, verify, review, commit, and open a PR for the active spec — resumin
      - `stage: applied`
      - `applied: <ISO timestamp>`
      - `updated: <ISO timestamp>`
+     - `stage-changed-at: <ISO timestamp>`
    - Append to Decision Log using the format from `docs/state-machine.md`:
      - `<timestamp> [applied] apply complete: implemented, verified, reviewed, committed, PR created/skipped`
    - Recommend `/srsp-archive` to finalize.

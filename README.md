@@ -131,6 +131,7 @@ Use these when you want finer control over a single artifact or step:
 | `/srsp-verify`    | Run tests only and update the test summary in `spec.md`. |
 | `/srsp-commit`    | Commit approved changes only (requires explicit confirmation). |
 | `/srsp-pr`        | Create a pull request only (requires explicit confirmation). |
+| `/srsp-report`    | Generate a health and traceability report for all specs. |
 | `/srsp-link`      | Link the active spec to an external issue tracker ticket. |
 
 ### Safety & guardrails

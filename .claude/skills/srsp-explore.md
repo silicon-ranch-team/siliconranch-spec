@@ -35,6 +35,7 @@ Understand and clarify the active spec before formalizing it into a proposal.
      - `stage: exploring`
      - `explored: <ISO timestamp>`
      - `updated: <ISO timestamp>`
+     - `stage-changed-at: <ISO timestamp>` (only if stage actually changed)
    - Append to `## Decision Log`:
      - `<timestamp> [exploring] exploration: clarified <topic>`
 

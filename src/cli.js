@@ -6,6 +6,7 @@ const { start } = require('./commands/start');
 const { status } = require('./commands/status');
 const { switchSpec } = require('./commands/switch');
 const { doctor } = require('./commands/doctor');
+const { report } = require('./commands/report');
 
 const COMMANDS = {
   help,
@@ -14,6 +15,7 @@ const COMMANDS = {
   status,
   switch: switchSpec,
   doctor,
+  report,
 };
 
 async function run(args) {
