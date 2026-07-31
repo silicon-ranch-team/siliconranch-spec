@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- `/srsp-coverage` skill to trace requirements through design TODOs, tasks, code changes, and tests.
+- Optional `trace` frontmatter field in `spec.md` for lightweight requirement traceability.
+
+### Changed
+- `.github/workflows/release.yml` now reads Node.js version from `package.json` `engines.node` and uses `npm ci` for deterministic publishes.
+- `/srsp-doctor` now validates `trace` metadata and checks implementation/test coverage at `implementing`+ stages.
+- `/srsp-apply` now offers an optional `/srsp-coverage` check after tests, auto-runs it when `coverage-command` is configured, and invokes `/srsp-sync` to keep artifacts aligned.
+- `srsp-start.md` template now includes an empty `trace:` frontmatter field.
+- `CLAUDE.md`, `README.md`, and `docs/spec-driven-framework.md` updated with `/srsp-sync` and `/srsp-coverage` commands and `trace` metadata documentation.
+
 ## [0.1.2] - 2026-07-31
 
 ### Added

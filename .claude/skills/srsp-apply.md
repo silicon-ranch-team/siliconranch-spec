@@ -38,7 +38,7 @@ Implement, verify, review, commit, and open a PR for the active spec — resumin
      - `commit-prefix` — prefix for generated commit messages.
      - `branch-prefix` — prefix for feature branch suggestions.
      - `pr-target` — overrides the PR target branch (takes precedence over `base-branch`).
-     - `coverage-command` — command used by `/srsp-coverage`.
+     - `coverage-command` — command used by `/srsp-coverage`; if set, `/srsp-apply` will run the coverage check automatically after tests pass.
      - `ticket-base-url` — base URL used by `/srsp-link` for ticket validation.
    - Unknown keys are ignored but should warn the engineer (caught by `srsp doctor`).
 
@@ -116,6 +116,16 @@ Implement, verify, review, commit, and open a PR for the active spec — resumin
    - Append to Decision Log using the format from `docs/state-machine.md`:
      - `<timestamp> [verified] tests run: <result summary>`
    - If tests fail, ask to fix or refine. Do not proceed to review until tests pass or the user explicitly skips.
+
+9b. **Optional coverage check.**
+   - Run `/srsp-coverage` if either of the following is true:
+     - `.srsp-config.md` has a non-empty `coverage-command`.
+     - The engineer explicitly chooses `Run coverage check`.
+   - Show the coverage summary table.
+   - If gaps are found (requirements without TODOs, TODOs without tasks, tasks without code changes, or changes without tests), warn the engineer and offer:
+     - `Fix gaps first` — invoke `/srsp-coverage` to expand findings.
+     - `Continue anyway` — proceed to review at the engineer's explicit risk.
+   - If no gaps, proceed without interruption.
 
 10. **Engineer review.**
    - Show a concise change summary (files modified, key decisions, test result).

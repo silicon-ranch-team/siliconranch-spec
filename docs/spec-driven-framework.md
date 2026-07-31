@@ -50,6 +50,8 @@ At every stage, Claude presents the artifact and asks for explicit user approval
 | `/srsp-proposal` | Refine only `proposal.md` |
 | `/srsp-design`   | Refine only `design.md` |
 | `/srsp-tasks`    | Refine only `tasks.md` |
+| `/srsp-sync`     | Detect drift between requirements, design TODOs, and tasks |
+| `/srsp-coverage` | Trace requirements → TODOs → tasks → code → tests |
 | `/srsp-verify`   | Run tests only |
 | `/srsp-commit`   | Commit approved changes only |
 | `/srsp-pr`       | Create pull request only |
@@ -102,6 +104,8 @@ test-result: passed (10/10)
 commit-hash: ""
 pr-url: ""
 base-branch: ""
+ticket-url: ""
+trace:
 ---
 ```
 
@@ -117,6 +121,7 @@ Fields:
 - `commit-hash`, `pr-url` — commit and PR tracking.
 - `base-branch` — optional override for the PR target / feature branch base. If empty, the framework auto-detects `development`/`develop`/`main`/`master`.
 - `ticket-url` — optional link to an external issue tracker ticket.
+- `trace` — optional lightweight traceability map from requirement IDs to TODO, task, implementation file pattern, and test pattern. Used by `/srsp-coverage` and validated by `/srsp-doctor`.
 
 ## Decision Log
 
