@@ -83,29 +83,33 @@ The framework is designed to be used sequentially. Each command produces or refi
    - Prepares a PR description and creates the PR **only after** engineer confirmation.
    - Records commit hash and PR URL in `spec.md`.
 
-5. **`/srsp-archive`** — Mark the spec done, archive it, cancel it, or reopen it.
+5. **`/srsp-archive`** — Mark the spec done, archive it, or cancel it.
    - Shows the final spec state.
-   - Options: **Done / Archive / Cancel / Reopen**.
+   - Options: **Done / Archive / Cancel**.
    - Updates `spec.md` metadata and Decision Log.
-   - To permanently delete, use `/srsp-delete`.
 
-6. **`/srsp-status`** — Check the state of all specs.
+6. **`/srsp-reopen`** — Reopen a done, archived, or cancelled spec.
+   - Captures the reason and optional ticket URL.
+   - Moves the spec back to `submitted` or `exploring` and creates reopen tasks.
+   - Updates `spec.md` metadata and Decision Log.
+
+7. **`/srsp-status`** — Check the state of all specs.
    - Shows a table of all specs with current stage, status, author, and last update.
    - Shows the active spec and recommends the next command.
    - Always confirms the active spec before switching.
 
-7. **`/srsp-switch`** — Switch the active spec to another existing spec.
+8. **`/srsp-switch`** — Switch the active spec to another existing spec.
    - Lists all non-archived specs.
    - Updates `.claude/specs/active-spec.txt` to the selected spec.
 
-8. **`/srsp-resume`** — Resume the active spec from its current stage.
+9. **`/srsp-resume`** — Resume the active spec from its current stage.
    - Reads the active spec stage and recommends or invokes the next appropriate command.
 
-9. **`/srsp-doctor`** — Validate the active spec.
+10. **`/srsp-doctor`** — Validate the active spec.
    - Checks `spec.md` frontmatter, stage values, required artifacts, and FR→TODO→Task coverage.
    - Reports findings and recommends fixes.
 
-10. **`/srsp-delete`** — Permanently delete a spec.
+11. **`/srsp-delete`** — Permanently delete a spec.
    - Requires typing the exact spec name to confirm.
    - Prefer `/srsp-archive` for normal completion.
 

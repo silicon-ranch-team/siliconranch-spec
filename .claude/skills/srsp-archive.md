@@ -1,11 +1,13 @@
 ---
 name: srsp-archive
-description: Mark the active Silicon Ranch spec done, archived, cancelled, or reopened.
+description: Mark the active Silicon Ranch spec done, archived, or cancelled.
 ---
 
 # /srsp-archive — Archive the Spec
 
-Finalize the active spec: mark it done, archive it, cancel it, or reopen it.
+Finalize the active spec: mark it done, archive it, or cancel it.
+
+> To reopen a finalized spec, use `/srsp-reopen` instead.
 
 ## Prerequisite
 
@@ -30,8 +32,8 @@ Finalize the active spec: mark it done, archive it, cancel it, or reopen it.
    - `Done` — mark `status: done`, `stage: done`. Keep the spec in `.claude/specs/`.
    - `Archive` — move the spec directory to `.claude/specs/archive/<spec-name>/`, set `status: archived`, `stage: archived`.
    - `Cancel` — set `status: cancelled`, `stage: cancelled`. Keep directory for reference.
-   - `Reopen` — set `status: active`, restore last meaningful stage, and recommend the next command.
    - To permanently delete the spec, use `/srsp-delete` instead.
+   - To reopen a finalized spec, use `/srsp-reopen` after `/srsp-archive` completes (or invoke `/srsp-reopen` directly).
 
 4. **Update `spec.md` metadata:**
    - `stage: <done | archived | cancelled | <last-stage>>`
@@ -44,7 +46,6 @@ Finalize the active spec: mark it done, archive it, cancel it, or reopen it.
      - Done: `<timestamp> [done] spec done: <note>`
      - Archived: `<timestamp> [archived] spec archived: <note>`
      - Cancelled: `<timestamp> [cancelled] spec cancelled: <note>`
-     - Reopened: `<timestamp> [<last-stage>] spec reopened: restored from <previous-status>`
 
 6. **If archived, clear the active spec file?**
    - If the archived spec was the active one, update `.claude/specs/active-spec.txt` to the next available active spec or leave it empty.
@@ -54,7 +55,7 @@ Finalize the active spec: mark it done, archive it, cancel it, or reopen it.
 
 ## Rules
 
-- Archive, cancel, and reopen require explicit confirmation.
+- Archive and cancel require explicit confirmation.
 - Deletion is handled by `/srsp-delete` and requires typed-name confirmation.
-- Reopening restores the spec to the last stage before finalization.
+- Reopening is handled by `/srsp-reopen`; this skill does not reopen specs.
 - Stage transitions and Decision Log format must follow `docs/state-machine.md`.
