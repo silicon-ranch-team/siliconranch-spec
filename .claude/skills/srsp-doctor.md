@@ -38,7 +38,7 @@ Validate the active spec's metadata, required artifacts, stage values, requireme
 3. **Validate `.srsp-config.md` files.**
    - Read `.srsp-config.md` at the project root.
    - Read `.claude/specs/<spec-name>/.srsp-config.md` if it exists.
-   - Allowed keys: `test-command`, `commit-prefix`, `branch-prefix`, `pr-target`, `coverage-command`, `ticket-base-url`.
+   - Allowed keys: `test-command`, `commit-prefix`, `branch-prefix`, `pr-target`, `coverage-command`, `stale-days`, `ticket-base-url`.
    - Empty values mean "use framework defaults" and are valid.
    - Report unknown keys as warnings.
 
@@ -55,11 +55,14 @@ Validate the active spec's metadata, required artifacts, stage values, requireme
    - Read `## Functional Requirements` from `proposal.md`.
    - Read `## Implementation TODOs` from `design.md`.
    - Read `## Implementation Tasks` from `tasks.md`.
+   - Read `## Verification Tasks` from `tasks.md`.
    - Check that every functional requirement has at least one TODO that references it (by FR id, title, or clear context).
    - Check that every TODO has at least one task that references it (by TODO id, title, or clear context).
    - Check that every implementation task maps back to a functional requirement or TODO.
+   - Check that `design.md` contains a non-empty `## Testing Strategy` section. If it is missing or empty, report an error.
+   - Check that every functional requirement has at least one verification task in `tasks.md`. If any requirement lacks one, report a warning.
    - Read the optional `trace` field from `spec.md` frontmatter. Validate that each `trace` key maps to a known requirement ID, that referenced TODO and task IDs exist, and that file/test patterns are non-empty.
-   - Report any orphan requirements, orphan TODOs, orphan tasks, or invalid trace entries.
+   - Report any orphan requirements, orphan TODOs, orphan tasks, missing testing strategy, missing verification tasks, or invalid trace entries.
 
 6. **Run implementation/test coverage check (if stage is `implementing` or later).**
    - Read `.srsp-config.md` for `coverage-command` and use it if set (non-empty).
@@ -76,6 +79,8 @@ Validate the active spec's metadata, required artifacts, stage values, requireme
    | Stage value | OK / Error | |
    | `.srsp-config.md` keys | OK / Warning | Unknown or missing frontmatter |
    | Required artifacts | OK / Warning / Error | Which files are missing |
+   | Testing Strategy | OK / Error | Missing or empty `## Testing Strategy` in `design.md` |
+   | Verification Tasks | OK / Warning | Requirements without a verification task |
    | FR → TODO coverage | OK / Warning | Orphan requirements |
    | TODO → Task coverage | OK / Warning | Orphan TODOs |
    | Task → Requirement coverage | OK / Warning | Orphan tasks |

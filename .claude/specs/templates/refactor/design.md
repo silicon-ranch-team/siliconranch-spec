@@ -25,8 +25,9 @@ generated: 2026-07-29
 - [ ] TODO-4: Repeat until target structure is reached.
 
 ## Testing Strategy
-- Run existing tests after every step.
-- Add characterization tests if behavior is not well covered.
+- **Existing tests** run after every refactor step.
+- **Characterization tests** are added first if behavior is not well covered, before changing production code.
+- All tests must pass during `/srsp-verify` before review.
 
 ## Risks & Mitigations
 - Risk: accidental behavior change → Mitigation: small steps + tests after each.

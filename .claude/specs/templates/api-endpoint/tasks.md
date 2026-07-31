@@ -12,10 +12,11 @@ generated: 2026-07-29
 - [ ] Task-3: Implement service logic ← TODO-3
 - [ ] Task-4: Implement persistence layer ← TODO-4
 - [ ] Task-5: Wire everything together
+- [ ] Task-6: Write unit and integration tests for the endpoint ← TODO-5
 
 ## Verification Tasks
-- [ ] Verify-1: Unit tests pass
-- [ ] Verify-2: Integration tests pass
+- [ ] Verify-1: Unit tests for service and validation pass
+- [ ] Verify-2: Integration tests for FR1–FR3 pass
 
 ## Review / Release Tasks
 - [ ] Engineer review and approval
