@@ -1,10 +1,6 @@
 ---
 name: srsp-start
 description: Create a new Silicon Ranch spec workspace with spec.md and artifact stubs.
-tags:
-  - srsp
-  - primary
-  - start
 ---
 
 # /srsp-start — Start a New Spec

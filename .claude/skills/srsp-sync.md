@@ -1,10 +1,6 @@
 ---
 name: srsp-sync
 description: Detect and report drift between proposal requirements, design TODOs, and implementation tasks for the active spec.
-tags:
-  - srsp
-  - granular
-  - sync
 ---
 
 # /srsp-sync — Sync Spec Artifacts

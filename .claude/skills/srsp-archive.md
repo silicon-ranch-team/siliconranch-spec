@@ -1,10 +1,6 @@
 ---
 name: srsp-archive
 description: Mark the active Silicon Ranch spec done, archived, cancelled, or reopened.
-tags:
-  - srsp
-  - primary
-  - archive
 ---
 
 # /srsp-archive — Archive the Spec

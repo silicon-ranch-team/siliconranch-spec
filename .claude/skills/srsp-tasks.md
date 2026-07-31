@@ -1,10 +1,6 @@
 ---
 name: srsp-tasks
 description: Refine tasks.md for the active spec and warn if tasks lack coverage.
-tags:
-  - srsp
-  - granular
-  - tasks
 ---
 
 # /srsp-tasks — Refine the Tasks Only

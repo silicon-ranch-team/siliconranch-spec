@@ -1,10 +1,6 @@
 ---
 name: srsp-design
 description: Refine design.md for the active spec and warn if TODOs lack tasks.
-tags:
-  - srsp
-  - granular
-  - design
 ---
 
 # /srsp-design — Refine the Design Only

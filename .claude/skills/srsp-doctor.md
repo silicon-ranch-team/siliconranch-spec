@@ -1,10 +1,6 @@
 ---
 name: srsp-doctor
 description: Diagnose the active Silicon Ranch spec for metadata, stage, and coverage issues.
-tags:
-  - srsp
-  - primary
-  - doctor
 ---
 
 # /srsp-doctor — Diagnose the Active Spec
