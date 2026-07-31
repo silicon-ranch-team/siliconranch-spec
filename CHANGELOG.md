@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-07-31
+
+### Added
+- GitHub Actions `release.yml` workflow to publish `silicon-ranch-spec` to npm on `v*.*.*` tag push.
+- GitHub Actions `validate.yml` workflow to run tests, validate spec frontmatter, and run `srsp doctor` on PRs.
+- `.github/scripts/validate-specs.js` and `validate-srsp-config.js` for CI validation.
+- `.srsp-config.md` schema with project-level and per-spec override support.
+- Per-spec `.srsp-config.md` templates for all spec templates.
+- Release checklist in `.github/pull_request_template.md`.
+
+### Changed
+- `README.md` updated with full GitFlow release process and `NPM_TOKEN` secret documentation.
+- `srsp-apply.md`, `srsp-doctor.md`, and `srsp-link.md` updated to read and validate `.srsp-config.md`.
+
 ## [0.1.1] - 2026-07-30
 
 ### Added
