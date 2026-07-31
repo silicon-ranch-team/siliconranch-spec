@@ -150,7 +150,8 @@ Create a new Silicon Ranch spec workspace under `.claude/specs/<spec-name>/`.
    - `branch-prefix`: ""         # e.g., `feature`, `feat`
    - `pr-target`: ""            # overrides `base-branch` in spec.md
    - `coverage-command`: ""     # e.g., `npm run coverage`, `pytest --cov`
-   - `stale-days`: ""           # e.g., 14
+   - `stale-days`: ""           # number of days before /srsp-report flags a spec as stale
+   - `ticket-base-url`: ""      # e.g., `https://github.com/org/repo/issues/`
    ```
 
 11. **Set the active spec.**

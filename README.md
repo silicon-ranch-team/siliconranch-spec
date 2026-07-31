@@ -183,6 +183,11 @@ You can also interleave granular commands when needed:
 - [docs/tutorial.md](docs/tutorial.md) — step-by-step walkthrough.
 - [docs/spec-driven-framework.md](docs/spec-driven-framework.md) — full framework guide.
 - [docs/state-machine.md](docs/state-machine.md) — canonical stages, transitions, and entry commands.
+- [docs/maturity.md](docs/maturity.md) — incremental adoption maturity model.
+- [docs/sync.md](docs/sync.md) — drift detection with `/srsp-sync`.
+- [docs/coverage.md](docs/coverage.md) — requirement traceability with `/srsp-coverage`.
+- [docs/reopen.md](docs/reopen.md) — reopening finalized specs.
+- [docs/report.md](docs/report.md) — spec health reports.
 - [.claude/specs/example-todo-api/](.claude/specs/example-todo-api/) — complete example spec.
 - [.claude/specs/README.md](.claude/specs/README.md) — how specs are organized.
 

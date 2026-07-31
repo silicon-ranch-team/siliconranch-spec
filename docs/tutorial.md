@@ -131,7 +131,7 @@ At any point, use `/srsp-status` to see all specs and their stages, `/srsp-switc
 
 ## Example
 
-See `.claude/specs/example-todo-api/` for a completed spec paused at `review-approved`. It shows what every artifact looks like after the apply phase.
+See `.claude/specs/example-todo-api/` for a fully explored and implemented example paused at `review-approved`. It shows what every artifact looks like after the apply phase, including a complete `trace` mapping and coverage report.
 
 ## Next Steps
 
