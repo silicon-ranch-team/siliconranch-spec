@@ -1,0 +1,70 @@
+name: Enforce Release Tag
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  enforce-tag:
+    name: Verify release tag exists after merge
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for missing release tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          COMMIT_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+
+          echo "Looking for associated release PRs for commit ${COMMIT_SHA}..."
+
+          release_ref=$(gh api "repos/${REPO}/commits/${COMMIT_SHA}/pulls" \
+            --jq '.[] | select(.state == "closed" and .merged_at != null) | .head.ref' 2>/dev/null \
+            | grep -E '^release/v[0-9]+\.[0-9]+\.[0-9]+$' \
+            | head -n 1 || true)
+
+          if [ -z "${release_ref}" ]; then
+            echo "✓ No associated release PR found; skipping tag enforcement."
+            exit 0
+          fi
+
+          version="${release_ref#release/v}"
+          expected_tag="v${version}"
+
+          echo "Detected release PR for version ${version}. Expected tag: ${expected_tag}"
+
+          tag_sha=$(git ls-remote --tags origin "refs/tags/${expected_tag}" | awk '{print $1}' || true)
+
+          if [ -z "${tag_sha}" ]; then
+            echo "❌ Tag ${expected_tag} is missing."
+            echo "This commit was merged from ${release_ref}. You must create and push the tag before other changes land on main:"
+            echo "  git checkout main"
+            echo "  git pull origin main"
+            echo "  git tag -a ${expected_tag} -m \"Release ${expected_tag}\""
+            echo "  git push origin ${expected_tag}"
+            exit 1
+          fi
+
+          # git ls-remote returns the tag object SHA for annotated tags, not the commit SHA.
+          # Dereference to get the commit SHA.
+          commit_sha_from_tag=$(git ls-remote --tags origin "refs/tags/${expected_tag}^{}" | awk '{print $1}' || true)
+          if [ -z "${commit_sha_from_tag}" ]; then
+            commit_sha_from_tag="${tag_sha}"
+          fi
+
+          if [ "${commit_sha_from_tag}" != "${COMMIT_SHA}" ]; then
+            echo "❌ Tag ${expected_tag} exists but points to ${commit_sha_from_tag}, not the current main commit ${COMMIT_SHA}."
+            exit 1
+          fi
+
+          echo "✓ Tag ${expected_tag} exists and points to the current main commit."

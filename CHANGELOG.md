@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.2.0] - 2026-07-31
 
 ### Added
+- `Release Check` CI workflow validates release branch name, `package.json` version, `CHANGELOG.md` entry, `package-lock.json`, and tests before a release is tagged.
+- `Enforce Release Tag` CI workflow verifies that the expected `vX.Y.Z` tag exists on `main` after a release PR merge.
+- `.github/scripts/validate-release.js` shared validation script used by both release workflows.
 - `/srsp-propose`, `/srsp-tasks`, and `/srsp-apply` now require a `## Testing Strategy` in `design.md` and verification tasks in `tasks.md` covering every functional requirement.
 - `srsp doctor` CLI and `/srsp-doctor` skill validate the presence of `## Testing Strategy` and `## Verification Tasks` for specs at `proposal-approved` and later stages.
 - PR validation workflow now builds MkDocs docs with `--strict` to catch broken documentation before merge.
