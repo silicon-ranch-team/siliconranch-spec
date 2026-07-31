@@ -46,13 +46,18 @@ Finalize the proposal, technical design, and task plan for the active spec.
    - Convert design TODOs into an ordered, checkable task plan.
    - Include implementation tasks, verification tasks, and review/release tasks.
 
-6. **Present a concise summary.**
+6. **Cross-check artifact consistency before presenting.**
+   - Compare `proposal.md` requirements to `design.md` TODOs and `tasks.md` tasks.
+   - If any requirement lacks a TODO or any TODO lacks a task, warn the engineer explicitly.
+   - Recommend `/srsp-sync` after acceptance if drift was detected.
+
+7. **Present a concise summary.**
    - Top 3–5 requirements.
    - High-level design approach.
    - Number of tasks and any dependencies.
-   - Any remaining open questions.
+   - Any consistency warnings or open questions.
 
-7. **Run the formal approval/refinement loop:**
+8. **Run the formal approval/refinement loop:**
 
    This is the formal approval gate. Ask the user:
    - `Accept` — update `spec.md` stage to `proposal-approved`, record decision, recommend `/srsp-apply`.
@@ -62,7 +67,7 @@ Finalize the proposal, technical design, and task plan for the active spec.
    - `Skip` — record reason, set stage to `proposal-skipped`, recommend `/srsp-apply`.
    - `Cancel` — set `status: cancelled`, record reason, stop.
 
-8. **Update `spec.md` metadata after every decision.**
+9. **Update `spec.md` metadata after every decision.**
    - `stage: <new stage>`
    - `proposed: <ISO timestamp>` on accept/skip
    - `updated: <ISO timestamp>`

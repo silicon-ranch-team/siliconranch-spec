@@ -46,7 +46,14 @@ Implement, verify, review, commit, and open a PR for the active spec — resumin
      - `ticket-base-url` — base URL used by `/srsp-link` for ticket validation.
    - Unknown keys are ignored but should warn the engineer (caught by `srsp doctor`).
 
-4. **Check git branch.**
+4. **Run `/srsp-sync` drift check (optional but recommended).**
+   - If the spec is at `proposal-approved` or later, compare `proposal.md` requirements, `design.md` TODOs, and `tasks.md` tasks.
+   - If drift is detected, warn the engineer and offer:
+     - `Fix drift first` — invoke `/srsp-sync`.
+     - `Continue anyway` — proceed at the engineer's explicit risk.
+   - If no drift, proceed without interruption.
+
+5. **Check git branch.**
    - Detect the current branch (`git branch --show-current`).
    - Read `base-branch` from `spec.md` frontmatter.
    - Read `pr-target` from `.srsp-config.md` if present.
@@ -69,7 +76,7 @@ Implement, verify, review, commit, and open a PR for the active spec — resumin
      - `Continue on current branch` — proceed only if the engineer explicitly accepts the risk.
      - `Cancel` — stop.
 
-5. **Resume check.**
+6. **Resume check.**
    - Read current `stage` from `spec.md`.
    - Based on the stage, ask the engineer where to resume:
      - `proposal-approved` — ask: `Start implementing`, `Review artifacts`, or `Cancel`.
@@ -83,12 +90,12 @@ Implement, verify, review, commit, and open a PR for the active spec — resumin
    - Append to Decision Log using the format from `docs/state-machine.md`:
      - `<timestamp> [<new-stage>] apply resumed: ready to continue from <stage>`
 
-6. **Ask implementation mode (if entering implementation).**
+7. **Ask implementation mode (if entering implementation).**
    - `All at once`
    - `One task at a time` (default for non-trivial specs)
    - `Batch by area`
 
-7. **Implement each pending task in `tasks.md`.**
+8. **Implement each pending task in `tasks.md`.**
    - Read relevant codebase files.
    - Make the change.
    - Update the task checkbox to `[x]`.
@@ -101,7 +108,7 @@ Implement, verify, review, commit, and open a PR for the active spec — resumin
      - On each completed task: `<timestamp> [implementing] task complete: <task text>`
    - If a task reveals a design flaw, stop and ask whether to refine the proposal/design/tasks or adjust locally.
 
-8. **Run tests live (`/srsp-verify` behavior).**
+9. **Run tests live (`/srsp-verify` behavior).**
    - Prefer `test-command` from `.srsp-config.md` if set (non-empty).
    - Otherwise detect project test command from conventions.
    - Run tests, capture output, show summary.
@@ -114,7 +121,7 @@ Implement, verify, review, commit, and open a PR for the active spec — resumin
      - `<timestamp> [verified] tests run: <result summary>`
    - If tests fail, ask to fix or refine. Do not proceed to review until tests pass or the user explicitly skips.
 
-9. **Engineer review.**
+10. **Engineer review.**
    - Show a concise change summary (files modified, key decisions, test result).
    - Show diff only if requested.
    - Ask the engineer:
@@ -126,7 +133,7 @@ Implement, verify, review, commit, and open a PR for the active spec — resumin
        - Append: `<timestamp> [cancelled] review cancelled: <reason>`
    - The engineer must explicitly approve before commit/PR.
 
-10. **Commit (`/srsp-commit` behavior, engineer-triggered).**
+11. **Commit (`/srsp-commit` behavior, engineer-triggered).**
    - Generate a commit message draft from the spec title and tasks.
    - Apply `commit-prefix` from `.srsp-config.md` if set (non-empty).
    - Show files to commit and the message.
@@ -139,7 +146,7 @@ Implement, verify, review, commit, and open a PR for the active spec — resumin
      - `Cancel` — stop.
    - Use the commit convention the project follows. Append `Co-Authored-By: Claude <noreply@anthropic.com>` if that is the project convention.
 
-11. **Open PR (`/srsp-pr` behavior, engineer-triggered).**
+12. **Open PR (`/srsp-pr` behavior, engineer-triggered).**
    - Reuse the development/production branch detection from Step 4, respecting `pr-target` from `.srsp-config.md` or `base-branch` from `spec.md` if set.
    - If on the development branch or production branch, warn and offer to create a feature branch from the development branch first.
    - Generate PR title and description from the proposal and design.
@@ -155,7 +162,7 @@ Implement, verify, review, commit, and open a PR for the active spec — resumin
    - If PR skipped, append:
      - `<timestamp> [pr-created] PR skipped: <reason>`
 
-12. **Finalize apply.**
+13. **Finalize apply.**
    - Update `spec.md` metadata:
      - `stage: applied`
      - `applied: <ISO timestamp>`
