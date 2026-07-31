@@ -1,0 +1,52 @@
+name: Validate PR
+
+on:
+  pull_request:
+    branches:
+      - development
+      - main
+
+jobs:
+  validate:
+    name: Validate PR
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Validate spec frontmatter
+        run: node .github/scripts/validate-specs.js
+
+      - name: Detect changed files
+        id: changed-files
+        run: |
+          if git diff --name-only origin/${{ github.base_ref }}...HEAD | grep -qE '^\.claude/skills/'; then
+            echo "skills_changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "skills_changed=false" >> $GITHUB_OUTPUT
+          fi
+          if git diff --name-only origin/${{ github.base_ref }}...HEAD | grep -qE '^\.claude/specs/example-todo-api/'; then
+            echo "example_spec_changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "example_spec_changed=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run srsp doctor on example spec
+        if: ${{ steps.changed-files.outputs.skills_changed == 'true' || steps.changed-files.outputs.example_spec_changed == 'true' }}
+        run: |
+          mkdir -p .claude/specs
+          echo "example-todo-api" > .claude/specs/active-spec.txt
+          node bin/srsp.js doctor
