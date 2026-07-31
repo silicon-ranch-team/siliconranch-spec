@@ -1,10 +1,6 @@
 ---
 name: srsp-resume
 description: Resume the active spec by reading its stage and invoking the next skill.
-tags:
-  - srsp
-  - primary
-  - resume
 ---
 
 # /srsp-resume — Resume the Active Spec

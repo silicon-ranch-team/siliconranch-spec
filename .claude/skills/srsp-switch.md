@@ -1,10 +1,6 @@
 ---
 name: srsp-switch
 description: Switch the active Silicon Ranch spec by selecting from all available specs.
-tags:
-  - srsp
-  - primary
-  - switch
 ---
 
 # /srsp-switch — Switch the Active Spec

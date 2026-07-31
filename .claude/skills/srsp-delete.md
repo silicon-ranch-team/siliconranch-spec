@@ -1,10 +1,6 @@
 ---
 name: srsp-delete
 description: Permanently delete a Silicon Ranch spec after typed-name confirmation.
-tags:
-  - srsp
-  - primary
-  - delete
 ---
 
 # /srsp-delete — Delete a Spec

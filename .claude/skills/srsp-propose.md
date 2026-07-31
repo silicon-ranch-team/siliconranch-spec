@@ -1,10 +1,6 @@
 ---
 name: srsp-propose
 description: Finalize proposal, design, and tasks for the active Silicon Ranch spec.
-tags:
-  - srsp
-  - primary
-  - propose
 ---
 
 # /srsp-propose — Propose the Solution

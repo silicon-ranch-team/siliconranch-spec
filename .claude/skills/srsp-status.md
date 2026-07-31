@@ -1,10 +1,6 @@
 ---
 name: srsp-status
 description: Show the active spec and a summary table of all Silicon Ranch specs.
-tags:
-  - srsp
-  - primary
-  - status
 ---
 
 # /srsp-status — Show Spec Status

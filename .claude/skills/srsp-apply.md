@@ -1,10 +1,6 @@
 ---
 name: srsp-apply
 description: Implement, verify, review, commit, and PR the active Silicon Ranch spec.
-tags:
-  - srsp
-  - primary
-  - apply
 ---
 
 # /srsp-apply — Apply the Approved Spec

@@ -1,10 +1,6 @@
 ---
 name: srsp-link
 description: Link the active spec to an external issue tracker ticket and record the URL.
-tags:
-  - srsp
-  - granular
-  - link
 ---
 
 # /srsp-link — Link Spec to Ticket
