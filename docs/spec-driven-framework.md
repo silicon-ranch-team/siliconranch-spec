@@ -207,6 +207,8 @@ The framework is designed to be used sequentially. Each command produces or refi
 
 3. **`/srsp-propose`** — Finalize proposal, design, and tasks.
    - Generates/refines `proposal.md`, `design.md`, and `tasks.md`.
+   - Ensures every functional requirement has a testable acceptance criterion.
+   - Requires a non-empty `## Testing Strategy` section in `design.md` and verification tasks in `tasks.md` covering every functional requirement before approval.
    - Presents a summary and asks: **Accept / Refine proposal / Refine design / Refine tasks / Skip / Cancel**.
    - Records every decision in `spec.md`.
 
@@ -237,6 +239,7 @@ The framework is designed to be used sequentially. Each command produces or refi
 
 9. **`/srsp-doctor`** — Validate the active spec.
    - Checks `spec.md` frontmatter, allowed stage/status values, required artifacts for the current stage, and FR→TODO→Task coverage.
+   - For `proposal-approved` and later stages, checks that `design.md` has a `## Testing Strategy` section and that `tasks.md` has verification tasks for every functional requirement.
    - Reports findings in a table and recommends a fix path.
 
 10. **`/srsp-delete`** — Permanently delete the active spec.
@@ -260,7 +263,7 @@ The framework is designed to be used sequentially. Each command produces or refi
 - **Spec name validation** — `/srsp-start` enforces kebab-case or snake_case (`^[a-z0-9]+(?:[-_][a-z0-9]+)*$`) and suggests a normalized name from the title.
 - **Active spec confirmation** — every SRSP skill confirms the active spec and its stage on entry.
 - **Drift warnings** — `/srsp-proposal`, `/srsp-design`, and `/srsp-tasks` warn when requirements, TODOs, and tasks fall out of sync.
-- **Spec diagnostics** — `/srsp-doctor` validates metadata, stage, required artifacts, and coverage, reporting OK / Warning / Error.
+- **Spec diagnostics** — `/srsp-doctor` validates metadata, stage, required artifacts, testing strategy, verification tasks, and coverage, reporting OK / Warning / Error.
 - **Delete protection** — `/srsp-delete` requires typing the exact spec name; `/srsp-archive` no longer offers Delete.
 - **Branch guardrails** — `/srsp-apply` detects the development branch (`development` or `develop`, falling back to `main`/`master`) and creates feature branches from it (`feature/<spec-name>`, `feat/<spec-name>`, or custom `feature/<input>`). `/srsp-pr` targets the development branch by default and supports an explicit hotfix path to the production branch (`main` or `master`).
 

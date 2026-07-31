@@ -17,6 +17,7 @@ generated: 2026-07-29
 ## Non-Functional Requirements
 1. NFR1: Fix does not degrade performance.
 2. NFR2: Fix does not introduce new warnings or errors.
+3. NFR3: Regression test is added before the fix is applied.
 
 ## Constraints & Assumptions
 - Target branch is the development branch unless this is a hotfix.

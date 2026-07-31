@@ -33,11 +33,12 @@ Response: 201 Created { ... }
 - [ ] TODO-2: Add request validation.
 - [ ] TODO-3: Implement service logic.
 - [ ] TODO-4: Add persistence layer.
-- [ ] TODO-5: Write unit/integration tests.
+- [ ] TODO-5: Write unit and integration tests for FR1–FR3.
 
 ## Testing Strategy
-- Unit tests for service and validation.
-- Integration tests for the endpoint.
+- **Unit tests** for service and validation using the configured test framework.
+- **Integration tests** for the endpoint, covering FR1–FR3 happy paths and error cases.
+- Tests are written during implementation as part of the corresponding task and run during `/srsp-verify`.
 
 ## Risks & Mitigations
 - Risk: breaking existing clients → Mitigation: version the path.

@@ -149,6 +149,8 @@ Create a new Silicon Ranch spec workspace under `.claude/specs/<spec-name>/`.
    - `commit-prefix`: ""        # e.g., `feat`, `fix`, `docs`
    - `branch-prefix`: ""         # e.g., `feature`, `feat`
    - `pr-target`: ""            # overrides `base-branch` in spec.md
+   - `coverage-command`: ""     # e.g., `npm run coverage`, `pytest --cov`
+   - `stale-days`: ""           # e.g., 14
    ```
 
 11. **Set the active spec.**

@@ -17,7 +17,7 @@ generated: 2026-07-28
 - [x] Task-8: Add Jest + supertest CRUD test suite ← TODO-8
 
 ## Verification Tasks
-- [x] Verify-1: Run `npm test` and confirm all CRUD tests pass ← FR1–FR5, NFR2
+- [x] Verify-1: Run `npm test` and confirm all CRUD tests pass ← FR1–FR6, NFR2
 
 ## Review / Release Tasks
 - [x] Engineer review and approval

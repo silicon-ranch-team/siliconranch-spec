@@ -26,8 +26,9 @@ generated: 2026-07-29
 - [ ] TODO-4: Verify all tests pass.
 
 ## Testing Strategy
-- Regression test reproduces the reported failure.
-- Full suite still passes.
+- **Regression test** reproduces the reported failure before the fix is applied.
+- **Full suite** still passes after the fix.
+- The regression test is written first as part of Task-1, then updated if needed during Task-3.
 
 ## Risks & Mitigations
 - Risk: fix breaks unrelated behavior → Mitigation: minimal change + full suite.

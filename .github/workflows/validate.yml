@@ -50,3 +50,8 @@ jobs:
           mkdir -p .claude/specs
           echo "example-todo-api" > .claude/specs/active-spec.txt
           node bin/srsp.js doctor
+
+      - name: Validate docs build
+        run: |
+          pip install mkdocs mkdocs-material
+          mkdocs build --strict
