@@ -25,20 +25,25 @@ Record an external issue tracker ticket URL in the active spec's metadata and De
    - Offer: `Continue` or `Cancel`.
    - To switch active spec, tell the user to run `/srsp-switch` and stop.
 
-2. **Ask for ticket details.**
+2. **Read `.srsp-config.md` for ticket base URL.**
+   - Read `.srsp-config.md` at the project root and `.claude/specs/<spec-name>/.srsp-config.md`.
+   - If `ticket-base-url` is set, offer to build a full URL from a ticket ID.
+   - If no base URL is set, ask the engineer for the full ticket URL.
+
+3. **Ask for ticket details.**
    - Ticket URL (e.g., GitHub issue, Jira ticket).
    - Optional ticket ID/title.
    - Optional note.
 
-3. **Update `spec.md` metadata.**
+4. **Update `spec.md` metadata.**
    - `ticket-url: <url>`
    - `updated: <ISO timestamp>`
 
-4. **Append to `## Decision Log`.**
+5. **Append to `## Decision Log`.**
    - Use the format from `docs/state-machine.md`:
      - `<timestamp> [<stage>] ticket linked: <ticket-id-or-url> — <note>`
 
-5. **Confirm to the engineer.**
+6. **Confirm to the engineer.**
    - Show the recorded ticket URL.
 
 ## Rules
