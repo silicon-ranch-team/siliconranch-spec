@@ -62,12 +62,17 @@ pr-created -> cancelled
 applied -> done
 applied -> archived
 applied -> cancelled
-done -> archived
-done -> cancelled
+
+# Final stages can be reopened
 done -> reopened
 archived -> reopened
-archived -> cancelled
 cancelled -> reopened
+
+# Reopened specs re-enter the workflow
+done -> archived
+done -> cancelled
+archived -> cancelled
+cancelled -> archived
 
 reopened -> submitted
 reopened -> exploring
