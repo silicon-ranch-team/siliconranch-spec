@@ -72,4 +72,4 @@
 - [ ] The `Release Check` workflow is green on this PR.
 - [ ] The npm automation token `NPM_TOKEN` is configured in GitHub Actions secrets.
 - [ ] This PR targets `main` and was branched from `development`.
-- [ ] The tag `vX.Y.Z` will be created and pushed immediately after merge; `Enforce Release Tag` will verify it on `main`.
+- [ ] The `Create Release Tag` workflow will create and push `vX.Y.Z` automatically after this PR merges.
