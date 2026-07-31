@@ -22,4 +22,5 @@ At every stage, Claude presents the generated artifact and asks for explicit eng
 - [Tutorial](tutorial.md)
 - [Framework Guide](spec-driven-framework.md)
 - [State Machine](state-machine.md)
+- [Maturity Model](maturity.md)
 - [CLI Reference](cli.md)

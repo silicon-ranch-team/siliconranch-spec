@@ -8,6 +8,12 @@ explored: 2026-07-28T10:00:00Z
 proposed: 2026-07-28T11:00:00Z
 applied: ""
 archived: ""
+last-reopened: ""
+reopened-count: 0
+reopened-reason: ""
+reopened-ticket-url: ""
+created-at: 2026-07-28T00:00:00Z
+stage-changed-at: 2026-07-29T09:00:00Z
 created: 2026-07-28
 updated: 2026-07-29T09:00:00Z
 last-run: 2026-07-28T13:50:00Z
@@ -15,6 +21,14 @@ test-result: passed (10/10)
 commit-hash: ""
 pr-url: ""
 base-branch: ""
+ticket-url: ""
+trace:
+  FR1: TODO-3,Task-3,src/routes/todos.ts,tests/todos.test.ts
+  FR2: TODO-4,Task-4,src/routes/todos.ts,tests/todos.test.ts
+  FR3: TODO-5,Task-5,src/routes/todos.ts,tests/todos.test.ts
+  FR4: TODO-6,Task-6,src/routes/todos.ts,tests/todos.test.ts
+  FR5: TODO-7,Task-7,src/routes/todos.ts,tests/todos.test.ts
+  FR6: TODO-2,Task-2,src/store.ts,tests/todos.test.ts
 ---
 
 # Spec: Todo List REST API
@@ -43,6 +57,21 @@ Build a minimal, testable REST API that supports creating, reading, updating, an
 - Use any language/framework the team prefers; this example uses TypeScript/Express.
 - No authentication required for the example.
 - The in-memory store can be replaced later with a database.
+
+## Coverage Report
+
+The `trace` frontmatter maps each functional requirement to its TODO, task, implementation file, and test file.
+
+| Requirement | TODO | Task | Implementation | Tests |
+|-------------|------|------|----------------|-------|
+| FR1: Create todo | TODO-3 | Task-3 | `src/routes/todos.ts` | `tests/todos.test.ts` |
+| FR2: List todos | TODO-4 | Task-4 | `src/routes/todos.ts` | `tests/todos.test.ts` |
+| FR3: Get todo | TODO-5 | Task-5 | `src/routes/todos.ts` | `tests/todos.test.ts` |
+| FR4: Update todo | TODO-6 | Task-6 | `src/routes/todos.ts` | `tests/todos.test.ts` |
+| FR5: Delete todo | TODO-7 | Task-7 | `src/routes/todos.ts` | `tests/todos.test.ts` |
+| FR6: Todo schema | TODO-2 | Task-2 | `src/store.ts` | `tests/todos.test.ts` |
+
+Coverage score: 6/6 requirements traced (100% — Good).
 
 ## Decision Log
 - 2026-07-28T10:00:00Z [submitted] spec submitted: initial draft created

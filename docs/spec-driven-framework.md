@@ -103,6 +103,8 @@ last-reopened: ""
 reopened-count: 0
 reopened-reason: ""
 reopened-ticket-url: ""
+created-at: 2026-07-28T00:00:00Z
+stage-changed-at: 2026-07-29T09:00:00Z
 created: 2026-07-28
 updated: 2026-07-29T09:00:00Z
 last-run: 2026-07-28T13:50:00Z
@@ -112,6 +114,12 @@ pr-url: ""
 base-branch: ""
 ticket-url: ""
 trace:
+  FR1: TODO-3,Task-3,src/routes/todos.ts,tests/todos.test.ts
+  FR2: TODO-4,Task-4,src/routes/todos.ts,tests/todos.test.ts
+  FR3: TODO-5,Task-5,src/routes/todos.ts,tests/todos.test.ts
+  FR4: TODO-6,Task-6,src/routes/todos.ts,tests/todos.test.ts
+  FR5: TODO-7,Task-7,src/routes/todos.ts,tests/todos.test.ts
+  FR6: TODO-2,Task-2,src/store.ts,tests/todos.test.ts
 ---
 ```
 
@@ -125,7 +133,9 @@ Fields:
 - `reopened-count` — number of times the spec has been reopened.
 - `reopened-reason` — reason the spec was last reopened.
 - `reopened-ticket-url` — optional ticket URL from the last reopen.
-- `created`, `updated` — creation and last-modified timestamps.
+- `created-at` — ISO timestamp of spec creation; used by `/srsp-report`.
+- `stage-changed-at` — ISO timestamp of the last stage change; used by `/srsp-report` for staleness.
+- `created`, `updated` — creation and last-modified dates (backward compatible).
 - `last-run`, `test-result` — most recent test summary.
 - `commit-hash`, `pr-url` — commit and PR tracking.
 - `base-branch` — optional override for the PR target / feature branch base. If empty, the framework auto-detects `development`/`develop`/`main`/`master`.
