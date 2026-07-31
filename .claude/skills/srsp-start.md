@@ -68,6 +68,7 @@ Create a new Silicon Ranch spec workspace under `.claude/specs/<spec-name>/`.
    pr-url: ""
    base-branch: ""
    ticket-url: ""
+   trace:
    ---
 
    # Spec: <Title>
