@@ -70,6 +70,7 @@ Spec metadata supports an optional `base-branch` field for per-spec PR target ov
 | `/srsp-verify`   | Run tests only |
 | `/srsp-commit`   | Commit approved changes only |
 | `/srsp-pr`       | Create pull request only |
+| `/srsp-report`   | Generate a health and traceability report for all specs |
 | `/srsp-link`     | Link the active spec to an external issue tracker ticket |
 
 ## Per-Spec Files

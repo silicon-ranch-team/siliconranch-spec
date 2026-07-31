@@ -36,6 +36,10 @@ Changes the active spec to the named spec.
 
 Validates the active spec's metadata, stage value, and required artifacts.
 
+### `srsp report [active|all]`
+
+Generates a health and traceability report for all specs (or only active specs). Lists specs by stage and age, flags stale specs, and shows a lightweight coverage score derived from the `trace` frontmatter field.
+
 ### `srsp help`
 
 Displays command help.

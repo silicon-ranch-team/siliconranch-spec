@@ -40,6 +40,7 @@ Finalize the active spec: mark it done, archive it, or cancel it.
    - `status: <done | archived | cancelled | active>`
    - `archived: <ISO timestamp>` (if archived)
    - `updated: <ISO timestamp>`
+   - `stage-changed-at: <ISO timestamp>`
 
 5. **Append to `spec.md` Decision Log:**
    - Use the format from `docs/state-machine.md`:

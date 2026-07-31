@@ -49,6 +49,7 @@ Reopen a spec that was previously marked `done`, `archived`, or `cancelled`. Cap
    - `status: active`
    - `stage: <submitted | exploring>` (the selected re-entry stage)
    - `updated: <ISO timestamp>`
+   - `stage-changed-at: <ISO timestamp>`
    - `reopened-count: <n>` — increment if the field exists; otherwise set to `1`.
    - `last-reopened: <ISO timestamp>`
    - `reopened-reason: <reason>`

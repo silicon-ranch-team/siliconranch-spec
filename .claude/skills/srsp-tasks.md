@@ -51,6 +51,7 @@ Generate or update only `tasks.md` for the active spec. Useful when you want to 
 6. **Update `spec.md` metadata and Decision Log.**
    - `stage: proposal-approved` (or keep current if later)
    - `updated: <ISO timestamp>`
+   - `stage-changed-at: <ISO timestamp>` (only if stage actually changed)
    - Append to `## Decision Log` using the format from `docs/state-machine.md`:
      - On accept: `<timestamp> [proposal-approved] tasks refined: updated task plan`
      - On edit/refine loop: `<timestamp> [proposal-approved] tasks refined: <what changed>`
