@@ -27,7 +27,9 @@ Implement, verify, review, commit, and open a PR for the active spec — resumin
 
 2. **Check required artifacts exist and have content beyond frontmatter.**
    - If `proposal.md`, `design.md`, or `tasks.md` is missing or has no body content, warn the engineer.
-   - Recommend `/srsp-propose` to generate the missing artifacts and stop.
+   - Verify `design.md` has a non-empty `## Testing Strategy` section.
+   - Verify `tasks.md` has verification tasks covering every functional requirement from `proposal.md`.
+   - If the testing strategy or verification tasks are missing, warn the engineer and recommend `/srsp-propose` to fix them before implementation.
 
 3. **Read SRSP config overrides.**
    - Read `.srsp-config.md` at the project root if it exists (project defaults).
@@ -94,7 +96,7 @@ Implement, verify, review, commit, and open a PR for the active spec — resumin
 8. **Implement each pending task in `tasks.md`.**
    - Read relevant codebase files.
    - Make the change.
-   - Create or update tests for the changed behavior as part of the implementation task. SRSP runs and verifies tests but does not generate them automatically, keeping test authorship with the engineer.
+   - For every implementation task that changes behavior, complete the corresponding verification task by creating or updating the test(s) defined in `design.md` `## Testing Strategy`. SRSP runs and verifies tests but does not generate them automatically, keeping test authorship with the engineer.
    - Update the task checkbox to `[x]`.
    - Optionally check off the corresponding TODO in `design.md`.
    - Update `spec.md` metadata:

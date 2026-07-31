@@ -27,7 +27,7 @@ Generate or update only `tasks.md` for the active spec. Useful when you want to 
 
 2. **Generate or update `tasks.md`.**
    - Implementation Tasks (mapped to design TODOs)
-   - Verification Tasks (including creating/updating tests and running the test command from `.srsp-config.md`)
+   - Verification Tasks (one per functional requirement; include creating/updating tests and running the test command from `.srsp-config.md`)
    - Review / Release Tasks
    - Notes
 
@@ -35,7 +35,8 @@ Generate or update only `tasks.md` for the active spec. Useful when you want to 
    - Compare each implementation task in `tasks.md` against:
      - `design.md` `## Implementation TODOs` — each task should map to an existing TODO.
      - `proposal.md` `## Functional Requirements` — each task should trace back to at least one requirement.
-   - If any task maps to a missing TODO or requirement, warn the engineer explicitly.
+   - Verify that every functional requirement has at least one verification task (unit test, integration test, UI test, or recorded manual check).
+   - If any task maps to a missing TODO or requirement, or if a requirement lacks a verification task, warn the engineer explicitly.
    - Recommend running `/srsp-propose` or `/srsp-design` to realign the artifacts.
 
 4. **Present the plan.**
