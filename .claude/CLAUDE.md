@@ -64,9 +64,12 @@ Spec metadata supports an optional `base-branch` field for per-spec PR target ov
 | `/srsp-proposal` | Refine only `proposal.md` |
 | `/srsp-design`   | Refine only `design.md` |
 | `/srsp-tasks`    | Refine only `tasks.md` |
+| `/srsp-sync`     | Detect drift between requirements, design TODOs, and tasks |
+| `/srsp-coverage` | Trace requirements → TODOs → tasks → code → tests |
 | `/srsp-verify`   | Run tests only |
 | `/srsp-commit`   | Commit approved changes only |
 | `/srsp-pr`       | Create pull request only |
+| `/srsp-link`     | Link the active spec to an external issue tracker ticket |
 
 ## Per-Spec Files
 

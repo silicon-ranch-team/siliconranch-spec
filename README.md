@@ -122,6 +122,8 @@ Use these when you want finer control over a single artifact or step:
 | `/srsp-proposal` | Refine only `proposal.md` without regenerating design or tasks. |
 | `/srsp-design`   | Refine only `design.md` without regenerating proposal or tasks. |
 | `/srsp-tasks`    | Edit or regenerate only `tasks.md`. |
+| `/srsp-sync`     | Detect drift between requirements, design TODOs, and tasks. |
+| `/srsp-coverage` | Trace requirements → TODOs → tasks → code → tests. |
 | `/srsp-verify`    | Run tests only and update the test summary in `spec.md`. |
 | `/srsp-commit`    | Commit approved changes only (requires explicit confirmation). |
 | `/srsp-pr`        | Create a pull request only (requires explicit confirmation). |
