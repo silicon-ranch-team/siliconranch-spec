@@ -105,7 +105,18 @@ Options:
 - **Done** — mark complete.
 - **Archive** — move to `.claude/specs/archive/`.
 - **Cancel** — abandon.
-- **Reopen** — return to active work.
+
+To reopen a finalized spec later, use `/srsp-reopen` and provide a reason and optional ticket URL.
+
+## Step 6: Monitor Spec Health (Optional)
+
+Run:
+
+```text
+/srsp-report
+```
+
+This produces a table of all specs with age, stage age, reopened count, and coverage score. Use it to find specs that are stuck or lack traceability.
 
 ## Working on Multiple Specs
 
@@ -119,4 +130,5 @@ See `.claude/specs/example-todo-api/` for a completed spec paused at `review-app
 
 - Read the [Framework Guide](spec-driven-framework.md) for full details.
 - Read [State Machine](state-machine.md) for allowed stage transitions.
+- Read [Maturity Model](maturity.md) for incremental adoption guidance.
 - Read [CLI Reference](cli.md) for the npm CLI commands.

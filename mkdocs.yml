@@ -8,6 +8,7 @@ nav:
   - Tutorial: tutorial.md
   - Framework Guide: spec-driven-framework.md
   - State Machine: state-machine.md
+  - Maturity Model: maturity.md
   - CLI: cli.md
 
 docs_dir: docs
