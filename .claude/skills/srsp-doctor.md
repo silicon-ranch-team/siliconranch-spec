@@ -18,6 +18,8 @@ Validate the active spec's metadata, required artifacts, stage values, and requi
 - Read `.claude/specs/<spec-name>/proposal.md` if it exists.
 - Read `.claude/specs/<spec-name>/design.md` if it exists.
 - Read `.claude/specs/<spec-name>/tasks.md` if it exists.
+- Read `.srsp-config.md` at the project root if it exists.
+- Read `.claude/specs/<spec-name>/.srsp-config.md` if it exists.
 
 ## Steps
 
@@ -36,7 +38,14 @@ Validate the active spec's metadata, required artifacts, stage values, and requi
    - `stage` must be one of:
      `submitted`, `exploring`, `proposal-draft`, `proposal-approved`, `implementing`, `verified`, `review-approved`, `committed`, `pr-created`, `applied`, `done`, `archived`, `cancelled`.
 
-3. **Validate artifact existence for the current stage.**
+3. **Validate `.srsp-config.md` files.**
+   - Read `.srsp-config.md` at the project root.
+   - Read `.claude/specs/<spec-name>/.srsp-config.md` if it exists.
+   - Allowed keys: `test-command`, `commit-prefix`, `branch-prefix`, `pr-target`, `coverage-command`, `ticket-base-url`.
+   - Empty values mean "use framework defaults" and are valid.
+   - Report unknown keys as warnings.
+
+4. **Validate artifact existence for the current stage.**
 
    | Stage | Required artifacts |
    |-------|--------------------|
@@ -45,7 +54,7 @@ Validate the active spec's metadata, required artifacts, stage values, and requi
    | `proposal-approved` | `spec.md`, `proposal.md`, `design.md`, `tasks.md` |
    | `implementing` and beyond | `spec.md`, `proposal.md`, `design.md`, `tasks.md` |
 
-4. **Validate coverage across artifacts.**
+5. **Validate coverage across artifacts.**
    - Read `## Functional Requirements` from `proposal.md`.
    - Read `## Implementation TODOs` from `design.md`.
    - Read `## Implementation Tasks` from `tasks.md`.
@@ -61,6 +70,7 @@ Validate the active spec's metadata, required artifacts, stage values, and requi
    | Frontmatter fields | OK / Error | Missing or invalid fields |
    | Status value | OK / Error | |
    | Stage value | OK / Error | |
+   | `.srsp-config.md` keys | OK / Warning | Unknown or missing frontmatter |
    | Required artifacts | OK / Warning / Error | Which files are missing |
    | FR → TODO coverage | OK / Warning | Orphan requirements |
    | TODO → Task coverage | OK / Warning | Orphan TODOs |

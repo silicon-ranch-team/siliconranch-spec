@@ -33,14 +33,18 @@ Implement, verify, review, commit, and open a PR for the active spec — resumin
    - If `proposal.md`, `design.md`, or `tasks.md` is missing or has no body content, warn the engineer.
    - Recommend `/srsp-propose` to generate the missing artifacts and stop.
 
-3. **Read per-spec overrides.**
-   - Read `.claude/specs/<spec-name>/.srsp-config.md` if it exists.
+3. **Read SRSP config overrides.**
+   - Read `.srsp-config.md` at the project root if it exists (project defaults).
+   - Read `.claude/specs/<spec-name>/.srsp-config.md` if it exists (per-spec overrides).
+   - Per-spec values override project-level values; empty values mean "use framework defaults".
    - Recognized overrides:
      - `test-command` — command to run in the verification step.
      - `commit-prefix` — prefix for generated commit messages.
      - `branch-prefix` — prefix for feature branch suggestions.
      - `pr-target` — overrides the PR target branch (takes precedence over `base-branch`).
-   - Empty values mean "use framework defaults".
+     - `coverage-command` — command used by `/srsp-coverage`.
+     - `ticket-base-url` — base URL used by `/srsp-link` for ticket validation.
+   - Unknown keys are ignored but should warn the engineer (caught by `srsp doctor`).
 
 4. **Check git branch.**
    - Detect the current branch (`git branch --show-current`).
