@@ -36,7 +36,8 @@ At every stage, Claude presents the artifact and asks for explicit user approval
 | `/srsp-explore`  | Clarify the spec and draft an initial proposal |
 | `/srsp-propose`  | Finalize proposal, design, and tasks |
 | `/srsp-apply`    | Implement, verify, review, commit, and open PR |
-| `/srsp-archive`  | Mark done, archive, cancel, or reopen a spec |
+| `/srsp-archive`  | Mark done, archive, or cancel a spec |
+| `/srsp-reopen`   | Reopen a done, archived, or cancelled spec |
 | `/srsp-status`   | Show active spec and all specs |
 | `/srsp-switch`   | Switch the active spec to another existing spec |
 | `/srsp-resume`   | Resume the active spec from its current stage |
@@ -97,6 +98,10 @@ explored: 2026-07-28T10:00:00Z
 proposed: 2026-07-28T11:00:00Z
 applied: ""
 archived: ""
+last-reopened: ""
+reopened-count: 0
+reopened-reason: ""
+reopened-ticket-url: ""
 created: 2026-07-28
 updated: 2026-07-29T09:00:00Z
 last-run: 2026-07-28T13:50:00Z
@@ -115,7 +120,10 @@ Fields:
 - `author` — engineer who owns the spec.
 - `status` — `active`, `done`, `archived`, `cancelled`.
 - `stage` — current workflow stage.
-- `explored`, `proposed`, `applied`, `archived` — timestamps for each major phase.
+- `explored`, `proposed`, `applied`, `archived`, `last-reopened` — timestamps for each major phase.
+- `reopened-count` — number of times the spec has been reopened.
+- `reopened-reason` — reason the spec was last reopened.
+- `reopened-ticket-url` — optional ticket URL from the last reopen.
 - `created`, `updated` — creation and last-modified timestamps.
 - `last-run`, `test-result` — most recent test summary.
 - `commit-hash`, `pr-url` — commit and PR tracking.

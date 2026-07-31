@@ -60,6 +60,10 @@ Create a new Silicon Ranch spec workspace under `.claude/specs/<spec-name>/`.
    proposed: ""
    applied: ""
    archived: ""
+   last-reopened: ""
+   reopened-count: 0
+   reopened-reason: ""
+   reopened-ticket-url: ""
    created: <ISO date>
    updated: <ISO date>
    last-run: ""
