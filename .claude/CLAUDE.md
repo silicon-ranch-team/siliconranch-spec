@@ -36,7 +36,7 @@ The above process should work for a specific spec.
 2. Run `/srsp-explore` to clarify the spec.
 3. Run `/srsp-propose` to finalize proposal, design, and tasks.
 4. Run `/srsp-apply` to implement, verify, review, commit, and open a PR.
-5. Run `/srsp-archive` to mark the spec done, archive it, or cancel it.
+5. Run `/srsp-archive` to mark the spec done, archive it, or cancel it. To reopen a finalized spec, use `/srsp-reopen`.
 6. Run `/srsp-resume` at any time to resume the active spec from its current stage.
 7. Run `/srsp-switch` at any time to change the active spec.
 
@@ -48,7 +48,8 @@ The above process should work for a specific spec.
 | `/srsp-explore`  | Clarify the spec and draft an initial proposal |
 | `/srsp-propose`  | Finalize proposal, design, and tasks |
 | `/srsp-apply`    | Implement, verify, review, commit, and open PR |
-| `/srsp-archive`  | Mark done, archive, cancel, or reopen a spec |
+| `/srsp-archive`  | Mark done, archive, or cancel a spec |
+| `/srsp-reopen`   | Reopen a done, archived, or cancelled spec |
 | `/srsp-status`   | Show active spec and all specs |
 | `/srsp-switch`   | Switch the active spec to another existing spec |
 | `/srsp-resume`   | Resume the active spec from its current stage |

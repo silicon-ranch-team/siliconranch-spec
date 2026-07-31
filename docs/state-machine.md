@@ -28,6 +28,7 @@ This document is the single source of truth for the Silicon Ranch Spec Driven De
 | `done` | Spec marked done without archiving. |
 | `archived` | Spec moved to archive. |
 | `cancelled` | Spec abandoned at any point. |
+| `reopened` | Spec was finalized and is now active again for a new iteration. |
 
 ## Allowed Transitions
 
@@ -63,10 +64,13 @@ applied -> archived
 applied -> cancelled
 done -> archived
 done -> cancelled
-done -> active (reopen)
-archived -> active (reopen)
+done -> reopened
+archived -> reopened
 archived -> cancelled
-cancelled -> active (reopen)
+cancelled -> reopened
+
+reopened -> submitted
+reopened -> exploring
 ```
 
 ## Required Artifacts Per Stage
@@ -79,6 +83,7 @@ cancelled -> active (reopen)
 | `proposal-approved` | `spec.md`, `proposal.md`, `design.md`, `tasks.md` |
 | `implementing` and beyond | `spec.md`, `proposal.md`, `design.md`, `tasks.md` |
 | `done`, `archived`, `cancelled` | `spec.md` (plus prior artifacts for reference) |
+| `reopened` | `spec.md`, `tasks.md` |
 
 ## Entry Commands Per Stage
 
@@ -96,9 +101,10 @@ When `/srsp-resume` or a skill boundary check needs to recommend the next comman
 | `committed` | `/srsp-apply` |
 | `pr-created` | `/srsp-apply` |
 | `applied` | `/srsp-archive` |
-| `done` | `/srsp-status` or `/srsp-start` |
-| `archived` | `/srsp-status` or `/srsp-start` |
-| `cancelled` | `/srsp-status` or `/srsp-start` |
+| `done` | `/srsp-reopen` or `/srsp-status` or `/srsp-start` |
+| `archived` | `/srsp-reopen` or `/srsp-status` or `/srsp-start` |
+| `cancelled` | `/srsp-reopen` or `/srsp-status` or `/srsp-start` |
+| `reopened` | `/srsp-explore` or `/srsp-propose` |
 
 ## Stage-Change Rules
 
@@ -106,7 +112,8 @@ When `/srsp-resume` or a skill boundary check needs to recommend the next comman
 2. `/srsp-propose` must set `stage: proposal-draft` as soon as it begins generating or refining artifacts. It is the formal approval gate.
 3. `/srsp-apply` advances through sub-stages: `implementing`, `verified`, `review-approved`, `committed`, `pr-created`, `applied`.
 4. `/srsp-archive` moves a spec to `done`, `archived`, or `cancelled`.
-5. `/srsp-delete` permanently removes a spec; it does not change `stage`.
+5. `/srsp-reopen` moves a spec from `done`, `archived`, or `cancelled` to `reopened`, then to `submitted` or `exploring`.
+6. `/srsp-delete` permanently removes a spec; it does not change `stage`.
 
 ## Decision Log Format
 
