@@ -229,6 +229,7 @@ Releases follow [GitFlow](https://nvie.com/posts/a-successful-git-branching-mode
 3. Update `CHANGELOG.md` with a `## [X.Y.Z]` release section.
 4. Commit the version/changelog bump and push the release branch.
 5. Open a PR from `release/vX.Y.Z` to `main`.
+   - The `Release Check` workflow validates the branch name, version, `CHANGELOG.md`, `package-lock.json`, and tests on every push/PR.
 6. After the PR is merged, tag the merge commit:
    ```bash
    git checkout main
@@ -236,6 +237,7 @@ Releases follow [GitFlow](https://nvie.com/posts/a-successful-git-branching-mode
    git tag -a vX.Y.Z -m "Release vX.Y.Z"
    git push origin vX.Y.Z
    ```
+   - The `Enforce Release Tag` workflow verifies that the expected `vX.Y.Z` tag exists on `main` after every merge.
 7. GitHub Actions will publish `silicon-ranch-spec@X.Y.Z` to npm automatically.
 
 **Required secret:** Add an npm **automation token** named `NPM_TOKEN` in the repository's GitHub Actions secrets (`Settings → Secrets and variables → Actions`).
