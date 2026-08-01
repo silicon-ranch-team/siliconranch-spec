@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-07-31
+
+### Added
+- `tests/yaml-frontmatter.test.js` validates YAML frontmatter for every skill, spec, template, and docs markdown file.
+
+### Changed
+- Restructure `.claude/skills/` from flat `<skill>.md` files into per-skill directories with `SKILL.md`, matching Claude Code skill discovery expectations.
+- `srsp init` now normalizes copied skill files into the per-skill `SKILL.md` directory structure.
+
+### Fixed
+- `src/commands/status.js` and `src/commands/report.js` frontmatter parsers now handle CRLF line endings.
+
 ## [0.2.1] - 2026-07-31
 
 ### Added

@@ -7,6 +7,22 @@ const FRAMEWORK_ASSETS = [
   { src: 'docs', dest: 'docs' },
 ];
 
+function normalizeSkillStructure(skillsDir) {
+  if (!fs.existsSync(skillsDir)) return;
+
+  for (const entry of fs.readdirSync(skillsDir, { withFileTypes: true })) {
+    if (!entry.isFile() || !entry.name.endsWith('.md')) continue;
+
+    const oldPath = path.join(skillsDir, entry.name);
+    const skillName = path.basename(entry.name, '.md');
+    const newDir = path.join(skillsDir, skillName);
+    const newPath = path.join(newDir, 'SKILL.md');
+
+    fs.mkdirSync(newDir, { recursive: true });
+    fs.renameSync(oldPath, newPath);
+  }
+}
+
 function copyDir(src, dest) {
   if (!fs.existsSync(dest)) {
     fs.mkdirSync(dest, { recursive: true });
@@ -37,6 +53,9 @@ function init(args, { cwd }) {
     }
 
     copyDir(srcPath, destPath);
+    if (src === '.claude/skills') {
+      normalizeSkillStructure(destPath);
+    }
     console.log(`Copied ${src} -> ${dest}`);
   }
 

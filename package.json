@@ -1,6 +1,6 @@
 {
   "name": "silicon-ranch-spec",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "CLI for the Silicon Ranch Spec Driven Development framework.",
   "main": "src/index.js",
   "bin": {
@@ -31,5 +31,8 @@
     "docs/",
     "README.md",
     "CHANGELOG.md"
-  ]
+  ],
+  "devDependencies": {
+    "js-yaml": "^5.2.2"
+  }
 }

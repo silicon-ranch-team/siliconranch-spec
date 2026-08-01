@@ -10,11 +10,11 @@ const ALLOWED_STAGES = new Set([
 function readFrontmatter(filePath) {
   if (!fs.existsSync(filePath)) return null;
   const content = fs.readFileSync(filePath, 'utf-8');
-  const match = content.match(/^---\n([\s\S]*?)\n---/);
+  const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!match) return {};
 
   const data = {};
-  for (const line of match[1].split('\n')) {
+  for (const line of match[1].split(/\r?\n/)) {
     const idx = line.indexOf(':');
     if (idx > 0) {
       const key = line.slice(0, idx).trim();
@@ -30,7 +30,7 @@ function readFrontmatter(filePath) {
 
 function parseSimpleYaml(text) {
   const data = {};
-  for (const line of text.split('\n')) {
+  for (const line of text.split(/\r?\n/)) {
     const idx = line.indexOf(':');
     if (idx > 0) {
       const key = line.slice(0, idx).trim();
@@ -48,7 +48,7 @@ function readSrspConfig(cwd) {
   const configPath = path.join(cwd, '.srsp-config.md');
   if (!fs.existsSync(configPath)) return {};
   const content = fs.readFileSync(configPath, 'utf-8');
-  const match = content.match(/^---\n([\s\S]*?)\n---/);
+  const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!match) return {};
   return parseSimpleYaml(match[1]);
 }
@@ -64,7 +64,7 @@ function daysSince(isoDate) {
 function countRequirements(proposalPath) {
   if (!fs.existsSync(proposalPath)) return 0;
   const content = fs.readFileSync(proposalPath, 'utf-8');
-  const match = content.match(/## Functional Requirements([\s\S]*?)(?=\n## |\n---|$)/);
+  const match = content.match(/## Functional Requirements([\s\S]*?)(?=\r?\n## |\r?\n---|$)/);
   if (!match) return 0;
   return (match[1].match(/^\d+\.|^-\s|^\*\s|FR\d+/gm) || []).length;
 }
