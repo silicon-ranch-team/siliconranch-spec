@@ -68,5 +68,8 @@
 
 - [ ] `package.json` version matches the release branch/tag (`release/vX.Y.Z` / `vX.Y.Z`).
 - [ ] `CHANGELOG.md` has an entry for this version.
+- [ ] `package-lock.json` is committed so `npm ci` can run in CI.
+- [ ] The `Release Check` workflow is green on this PR.
 - [ ] The npm automation token `NPM_TOKEN` is configured in GitHub Actions secrets.
 - [ ] This PR targets `main` and was branched from `development`.
+- [ ] The `Create Release Tag` workflow will create and push `vX.Y.Z` automatically after this PR merges.
