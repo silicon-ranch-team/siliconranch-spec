@@ -31,5 +31,8 @@
     "docs/",
     "README.md",
     "CHANGELOG.md"
-  ]
+  ],
+  "devDependencies": {
+    "js-yaml": "^5.2.2"
+  }
 }
