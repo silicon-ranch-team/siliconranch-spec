@@ -1,6 +1,6 @@
 {
   "name": "silicon-ranch-spec",
-  "version": "0.1.2",
+  "version": "0.2.1",
   "description": "CLI for the Silicon Ranch Spec Driven Development framework.",
   "main": "src/index.js",
   "bin": {

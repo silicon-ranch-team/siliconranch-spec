@@ -17,7 +17,8 @@ function readFrontmatter(filePath) {
 
   const data = {};
   for (const line of match[1].split(/\r?\n/)) {
-    if (/^\s/.test(line)) continue;
+    // Skip indented lines that belong to a nested block (e.g. trace:).
+    if (!line || line[0] === ' ' || line[0] === '\t') continue;
     const idx = line.indexOf(':');
     if (idx > 0) {
       const key = line.slice(0, idx).trim();
@@ -80,26 +81,6 @@ function doctor(args, { cwd }) {
   for (const artifact of requiredArtifacts) {
     if (!fs.existsSync(path.join(specDir, artifact))) {
       findings.push(`Missing required artifact for stage ${fm.stage}: ${artifact}`);
-    }
-  }
-
-  // Validate testing strategy and verification tasks for proposal-approved+
-  if (['proposal-approved', 'implementing', 'verified', 'review-approved', 'committed', 'pr-created', 'applied'].includes(fm.stage)) {
-    const designMd = path.join(specDir, 'design.md');
-    const tasksMd = path.join(specDir, 'tasks.md');
-    if (fs.existsSync(designMd)) {
-      const designContent = fs.readFileSync(designMd, 'utf-8');
-      const tsMatch = designContent.match(/## Testing Strategy\r?\n([\s\S]*?)(?=\n## |\n---|$)/);
-      if (!tsMatch || !tsMatch[1].trim()) {
-        findings.push('Missing or empty ## Testing Strategy in design.md');
-      }
-    }
-    if (fs.existsSync(tasksMd)) {
-      const tasksContent = fs.readFileSync(tasksMd, 'utf-8');
-      const verifyMatch = tasksContent.match(/## Verification Tasks\r?\n([\s\S]*?)(?=\n## |\n---|$)/);
-      if (!verifyMatch || !verifyMatch[1].trim()) {
-        findings.push('Missing or empty ## Verification Tasks in tasks.md');
-      }
     }
   }
 

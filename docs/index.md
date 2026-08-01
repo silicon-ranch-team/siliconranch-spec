@@ -23,4 +23,8 @@ At every stage, Claude presents the generated artifact and asks for explicit eng
 - [Framework Guide](spec-driven-framework.md)
 - [State Machine](state-machine.md)
 - [Maturity Model](maturity.md)
+- [Drift Detection](sync.md)
+- [Traceability](coverage.md)
+- [Reopening Specs](reopen.md)
+- [Spec Reports](report.md)
 - [CLI Reference](cli.md)

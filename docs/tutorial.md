@@ -62,12 +62,7 @@ Run:
 
 Claude generates/refines `proposal.md`, `design.md`, and `tasks.md`, then presents a summary.
 
-This is the **formal approval gate**. Before accepting:
-- Every functional requirement must have testable acceptance criteria.
-- `design.md` must include a `## Testing Strategy` section.
-- `tasks.md` must include verification tasks covering every functional requirement.
-
-Options:
+This is the **formal approval gate**. Options:
 - **Accept** — sets `stage: proposal-approved`, recommends `/srsp-apply`.
 - **Refine proposal/design/tasks** — loop until you are happy.
 - **Skip** — record reason and move forward.
@@ -91,12 +86,10 @@ Claude:
    - `review-approved` — commits changes.
    - `committed` — creates a PR.
    - `pr-created` — finalizes to `applied`.
-4. During implementation, writes code **and** the tests defined in the `## Testing Strategy` for each behavior-changing task.
-5. Runs tests during verification; failures block review.
 
 You must explicitly approve:
 - The feature branch choice.
-- Implementation and test changes.
+- Implementation changes, including any tests you create as part of the tasks.
 - Committing changes.
 - Creating the PR.
 
@@ -131,7 +124,7 @@ At any point, use `/srsp-status` to see all specs and their stages, `/srsp-switc
 
 ## Example
 
-See `.claude/specs/example-todo-api/` for a completed spec paused at `review-approved`. It shows what every artifact looks like after the apply phase.
+See `.claude/specs/example-todo-api/` for a fully explored and implemented example paused at `review-approved`. It shows what every artifact looks like after the apply phase, including a complete `trace` mapping and coverage report.
 
 ## Next Steps
 
